@@ -136,7 +136,7 @@
                 <version>${mybatis-generator.version}</version>
                 <configuration>
                     <configurationFile>
-                        ../shop-backend/src/main/resources/generator.xml
+                        ${basedir}/src/main/resources/generator.xml
                     </configurationFile>
                     <overwrite>true</overwrite>
                     <verbose>true</verbose>

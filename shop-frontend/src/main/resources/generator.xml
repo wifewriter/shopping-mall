@@ -20,12 +20,12 @@
 		</jdbcConnection>
 
 		<javaModelGenerator targetPackage="generator.entity"
-			targetProject="src/main/java/com.qf1801.group4.shop.entity" />
+			targetProject="src/main/java/" />
 
-		<sqlMapGenerator targetPackage="generator.mapper" targetProject="src/main/java/mapper" />
+		<sqlMapGenerator targetPackage="generator.mapping" targetProject="src/main/resources" />
 
-		<javaClientGenerator targetPackage="generator.mapper"
-			targetProject="src/main/resources/mapper" type="XMLMAPPER" />
+		<javaClientGenerator targetPackage="generator.dao"
+			targetProject="src/main/java" type="XMLMAPPER" />
 
 		<table tableName="%">
 			<generatedKey column="id" sqlStatement="JDBC" />
