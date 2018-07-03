@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!-- 禁用电话号码检测功能，禁止对数字随便可以拨号 -->
+		<meta name="format-detection" content="telephone=no">
+		<!-- 禁用地址检测功能，禁止跳转到地图 -->
+		<meta name="format-detection" content="address=no">
+		<!-- 在苹果设备上以全屏方式打开本网页 -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<!-- 设置在苹果设备上状态的颜色，默认白色，要设置成什么颜色以Web颜色的风格而定 -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="white">
+		<title>微信商城-地址</title>
+		<link rel="stylesheet" type="text/css" href="vendor/normalize.min.css" />
+		<!-- 可选 -->
+		<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css" />
+		<!-- 可选 -->
+		<link rel="stylesheet" href="vendor/swiper/swiper.min.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/address.css" />
+		<!-- 苹果设备在桌面上生成的快捷图标 -->
+		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+		<link rel="icon" href="img/favicon.ico">
+	</head>
+
+	<body>
+		<header class="header-wrapper">
+			<ul class="header-list">
+				<li>
+					<a href="index.html">
+						<i class="fa fa-2x fa-home"></i>
+						<p>首页</p>
+					</a>
+				</li>
+				<li>
+					<a href="productlist.html">
+						<i class="fa fa-2x fa-th"></i>
+						<p>商品分类</p>
+					</a>
+				</li>
+				<li>
+					<a href="shopcar.html">
+						<i class="fa fa-2x fa-shopping-cart"></i>
+						<p>购物车</p>
+					</a>
+				</li>
+				<li>
+					<a href="userinfo.html">
+						<i class="fa fa-2x fa-user"></i>
+						<p>用户中心</p>
+					</a>
+				</li>
+			</ul>
+		</header>
+		<section style="width: 100%; height: .6rem;"></section>
+
+		<section class="address-container">
+			<div class="container-message">
+				<div class="message-inner">
+					<input type="text" placeholder="请填写你的真实姓名" />
+					<select name="privence">
+		    			<option value="">--请选择所在省市--</option>
+		    			<option value="">北京市</option>
+		    			<option value="">上海市</option>
+		    			<option value="">重庆市</option>
+		    		</select>&nbsp;&nbsp;
+					<select name="city">
+		    			<option value="privence">--请选择所在城市--</option>
+		    			<option value="">长沙</option>
+		    			<option value="">武汉</option>
+		    			<option value="">昆明</option>
+		    		</select>&nbsp;&nbsp;
+					<select name="area">
+		    			<option value="privence">--请选择所在地区--</option>
+		    			<option value="">沙坪坝区</option>
+		    			<option value="">呈贡区</option>
+		    			<option value="">五华区</option>
+		    		</select>
+					<input type="text" placeholder="详细地址（不必重复填写地址）" />
+					<input type="text" placeholder="手机或者电话" />
+					<input type="submit" value="保存" id="submit" />
+				</div>
+			</div>
+
+			<div class="container-address">
+				<p>张三(15788888888)</p>
+				<p>天津市 市辖县 静海县 qwe</p>
+				<div class="p-line"></div>
+				<div class="address-editor">
+					<div class="editor-left">
+						<i class="fa fa-edit"></i>
+						<span>编辑</span>
+					</div>
+					<div class="editor-right">
+						<i class="fa fa-trash-o"></i>
+						<span>删除</span>
+					</div>
+				</div>
+			</div>
+			<div class="container-address">
+				<p>张三(15788888888)</p>
+				<p>天津市 市辖县 静海县 qwe</p>
+				<div class="p-line"></div>
+				<div class="address-editor">
+					<div class="editor-left">
+						<i class="fa fa-edit"></i>
+						<span>编辑</span>
+					</div>
+					<div class="editor-right">
+						<i class="fa fa-trash-o"></i>
+						<span>删除</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script src="js/resize.js"></script>
+	</body>
+
+</html>
