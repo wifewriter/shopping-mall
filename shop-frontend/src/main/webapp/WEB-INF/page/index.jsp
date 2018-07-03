@@ -7,13 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta charset="utf-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <!-- 禁用电话号码检测功能，禁止对数字随便可以拨号 -->
     <meta name="format-detection" content="telephone=no">
     <!-- 禁用地址检测功能，禁止跳转到地图 -->
@@ -23,16 +22,17 @@
     <!-- 设置在苹果设备上状态的颜色，默认白色，要设置成什么颜色以Web颜色的风格而定 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <title>微信商城-首页</title>
-    <link rel="stylesheet" type="text/css" href="../../static/vendor/normalize.min.css" />
+    <%@include file="../../static/import.jsp" %>
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/normalize.min.css"/>
     <!-- 可选 -->
-    <link rel="stylesheet" href="../../static/vendor/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../static/vendor/font-awesome/css/font-awesome.min.css"/>
     <!-- 可选 -->
-    <link rel="stylesheet" href="../../../static/vendor/swiper/swiper.min.css" />
-    <link rel="stylesheet" href="../../../static/css/common.css" />
-    <link rel="stylesheet" href="../../../static/css/index.css" />
+    <link rel="stylesheet" href="../../static/vendor/swiper/swiper.min.css"/>
+    <link rel="stylesheet" href="../../static/css/common.css"/>
+    <link rel="stylesheet" href="../../static/css/index.css"/>
     <!-- 苹果设备在桌面上生成的快捷图标 -->
-    <link rel="apple-touch-icon" href="../../../static/img/apple-touch-icon.png">
-    <link rel="icon" href="../../../static/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png">
+    <link rel="icon" href="../../static/img/favicon.ico">
 </head>
 
 <body>
@@ -68,7 +68,7 @@
 <section class="index-banner swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img src="img/1.jpg" />
+            <img src="img/1.jpg"/>
             <div class="slide-layer">
                 <div class="layer-inner">
                     <p>微信价<span>600元</span></p>
@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="swiper-slide">
-            <img src="img/2.jpg" />
+            <img src="img/2.jpg"/>
             <div class="slide-layer">
                 <div class="layer-inner">
                     <p>微信价<span>600元</span></p>
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="swiper-slide">
-            <img src="img/3.jpg" />
+            <img src="img/3.jpg"/>
             <div class="slide-layer">
                 <div class="layer-inner">
                     <p>微信价<span>600元</span></p>
@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="swiper-slide">
-            <img src="img/4.jpg" />
+            <img src="img/4.jpg"/>
             <div class="slide-layer">
                 <div class="layer-inner">
                     <p>微信价<span>600元</span></p>
@@ -121,7 +121,7 @@
 <section class="index-main">
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-exclusive">
                 <div class="trangle-text">
                     <span>专属</span>
@@ -130,14 +130,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-hot">
                 <div class="trangle-text">
                     <span>热销</span>
@@ -146,14 +147,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-limit">
                 <div class="trangle-text">
                     <span>限购</span>
@@ -162,14 +164,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-exclusive">
                 <div class="trangle-text">
                     <span>专属</span>
@@ -178,14 +181,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-hot">
                 <div class="trangle-text">
                     <span>热销</span>
@@ -194,14 +198,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-limit">
                 <div class="trangle-text">
                     <span>限购</span>
@@ -210,14 +215,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-exclusive">
                 <div class="trangle-text">
                     <span>专属</span>
@@ -226,14 +232,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-hot">
                 <div class="trangle-text">
                     <span>热销</span>
@@ -242,14 +249,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-limit">
                 <div class="trangle-text">
                     <span>限购</span>
@@ -258,14 +266,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-exclusive">
                 <div class="trangle-text">
                     <span>专属</span>
@@ -274,14 +283,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-hot">
                 <div class="trangle-text">
                     <span>热销</span>
@@ -290,14 +300,15 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
     </a>
     <a href="info.html">
         <div class="main-list">
-            <img src="img/product1.png" />
+            <img src="img/product1.png"/>
             <div class="trangle-limit">
                 <div class="trangle-text">
                     <span>限购</span>
@@ -306,7 +317,8 @@
 
             <div class="list-right">
                 <p class="title">广联达变更算量</p>
-                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP , MySQL等各种编程语言的基础知识</p>
+                <p class="details">菜鸟教程(www.runoob.com)提供了最全的编程技术基础教程, 介绍了HTML、CSS、Javascript、Python,Java,Ruby,C,PHP ,
+                    MySQL等各种编程语言的基础知识</p>
                 <p class="price">价格:<span>￥235</span></p>
             </div>
         </div>
@@ -318,7 +330,7 @@
 <script src="vendor/swiper/swiper-3.4.0.jquery.min.js"></script>
 <script src="vendor/swiper/swiper.animate1.0.2.min.js"></script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         var mySwiper = new Swiper('.swiper-container', {
             loop: true,
             autoplay: 5000,

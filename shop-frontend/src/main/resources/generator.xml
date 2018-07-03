@@ -24,7 +24,7 @@
 
 		<sqlMapGenerator targetPackage="generator.mapping" targetProject="src/main/resources" />
 
-		<javaClientGenerator targetPackage="generator.dao"
+		<javaClientGenerator targetPackage="com.qf1801.group4.shop."
 			targetProject="src/main/java" type="XMLMAPPER" />
 
 		<table tableName="%">
