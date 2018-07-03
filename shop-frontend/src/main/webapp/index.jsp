@@ -11,7 +11,8 @@
     <title>index</title>
 </head>
 <body>
-frontend-index
-
+<p>index</p>
+<%--location = '<%=request.getContextPath()%>/page/mainPage';--%>
+<a href="<%=request.getContextPath()%>/page/toMainPage">toMainPage</a>
 </body>
 </html>

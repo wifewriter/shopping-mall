@@ -210,4 +210,33 @@ public class ShopProduct {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"id\":\"")
+                .append(id).append('\"');
+        sb.append(",\"picUrl\":\"")
+                .append(picUrl).append('\"');
+        sb.append(",\"flag\":")
+                .append(flag);
+        sb.append(",\"name\":\"")
+                .append(name).append('\"');
+        sb.append(",\"introduction\":\"")
+                .append(introduction).append('\"');
+        sb.append(",\"price\":")
+                .append(price);
+        sb.append(",\"recommend\":")
+                .append(recommend);
+        sb.append(",\"number\":")
+                .append(number);
+        sb.append(",\"createTime\":\"")
+                .append(createTime).append('\"');
+        sb.append(",\"shopProductCategoryId\":\"")
+                .append(shopProductCategoryId).append('\"');
+        sb.append(",\"description\":\"")
+                .append(description).append('\"');
+        sb.append('}');
+        return sb.toString();
+    }
 }
