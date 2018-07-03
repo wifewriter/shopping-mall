@@ -11,6 +11,6 @@
     <title>index</title>
 </head>
 <body>
-index
+frontend-index
 </body>
 </html>

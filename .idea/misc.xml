@@ -3,14 +3,12 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/shop-backend" />
     <file type="web" url="file://$PROJECT_DIR$/shop-frontend" />
-    <file type="web" url="file://$PROJECT_DIR$/shop-web" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/shop-frontend/pom.xml" />
-        <option value="$PROJECT_DIR$/shop-web/pom.xml" />
       </list>
     </option>
   </component>

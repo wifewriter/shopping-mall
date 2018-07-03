@@ -11,7 +11,6 @@
         <module>shop-common</module>
         <module>shop-backend</module>
         <module>shop-frontend</module>
-        <module>shop-web</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -58,12 +57,6 @@
                 <version>${servlet-api.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!-- spring -->
-            <!--<dependency>-->
-                <!--<groupId>org.springframework</groupId>-->
-                <!--<artifactId>spring-web</artifactId>-->
-                <!--<version>${spring.version}</version>-->
-            <!--</dependency>-->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
@@ -155,15 +148,14 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!-- jetty -->
                 <plugin>
                     <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
+                    <version>9.4.5.v20170502</version>
                     <configuration>
                         <scanIntervalSeconds>10</scanIntervalSeconds>
                         <useTestClasspath>true</useTestClasspath>
-                        <httpConnector>
-                            <port>8080</port>
-                        </httpConnector>
                         <webApp>
                             <contextPath>/</contextPath>
                         </webApp>
@@ -177,16 +169,6 @@
                         <source>${jdk.version}</source>
                         <target>${jdk.version}</target>
                         <encoding>${encoding}</encoding>
-                    </configuration>
-                </plugin>
-
-                <!-- 配置tomcat插件 -->
-                <plugin>
-                    <groupId>org.apache.tomcat.maven</groupId>
-                    <artifactId>tomcat7-maven-plugin</artifactId>
-                    <configuration>
-                        <path>/</path>
-                        <port>8080</port>
                     </configuration>
                 </plugin>
 

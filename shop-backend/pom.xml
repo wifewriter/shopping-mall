@@ -107,6 +107,18 @@
 
     <build>
         <plugins>
+            <!-- jetty -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <useTestClasspath>true</useTestClasspath>
+                    <httpConnector>
+                        <port>8080</port>
+                    </httpConnector>
+                </configuration>
+            </plugin>
             <!-- 配置JDK版本的插件 -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
