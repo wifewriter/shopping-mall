@@ -9,6 +9,7 @@
         <module name="shop-backend" />
         <module name="shop-common" />
         <module name="shop-frontend" />
+        <module name="shop-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
@@ -16,6 +17,7 @@
       <module name="shop-backend" target="1.8" />
       <module name="shop-common" target="1.8" />
       <module name="shop-frontend" target="1.8" />
+      <module name="shop-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

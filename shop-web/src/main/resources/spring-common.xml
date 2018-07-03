@@ -22,7 +22,7 @@
     <aop:aspectj-autoproxy/>
 
     <!-- Spring 读取properties配置文件 -->
-    <context:property-placeholder file-encoding="UTF-8" location="classpath:db-config.properties"/>
+    <context:property-placeholder file-encoding="UTF-8" location="classpath*:db-config.properties"/>
 
     <!-- 与MyBatis的整合 -->
     <import resource="spring-mybatis.xml"/>
