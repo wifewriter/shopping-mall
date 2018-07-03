@@ -10,6 +10,8 @@
     <modules>
         <module>shop-common</module>
         <module>shop-backend</module>
+        <module>shop-frontend</module>
+        <module>shop-web</module>
     </modules>
     <packaging>pom</packaging>
 
