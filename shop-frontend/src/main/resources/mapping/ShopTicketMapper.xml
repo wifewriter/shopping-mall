@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.dao.ShopTicketMapper">
-  <resultMap id="BaseResultMap" type="generator.entity.ShopTicket">
+<mapper namespace="com.qf1801.group4.shop..ShopTicketMapper">
+  <resultMap id="BaseResultMap" type="com.qf1801.group4.shop.entity.ShopTicket">
     <!--
       WARNING - @mbg.generated
     -->
