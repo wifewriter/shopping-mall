@@ -19,7 +19,7 @@ public class SysUser {
     /**
      * 1、启用；2、禁用
      */
-    private Byte status;
+    private Integer status;
 
     /**
      * @return id
@@ -82,7 +82,7 @@ public class SysUser {
      *
      * @return status - 1、启用；2、禁用
      */
-    public Byte getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
@@ -91,7 +91,7 @@ public class SysUser {
      *
      * @param status 1、启用；2、禁用
      */
-    public void setStatus(Byte status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 }

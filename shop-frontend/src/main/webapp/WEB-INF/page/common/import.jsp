@@ -8,5 +8,6 @@
 
 <script src="${ctx }/static/vendor/jquery.min.js"></script>
 <script src="${ctx }/static/vendor/bootstrap.min.js"></script>
+
 <style>
 </style>
