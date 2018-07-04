@@ -50,6 +50,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!-- 	spring mvc  DispatcherServlet 结束-->
+<<<<<<< HEAD
     
     		<!-- 验证码组件 -->
 	<servlet>
@@ -72,6 +73,8 @@
     
     
     
+=======
+>>>>>>> branch 'master' of https://gitee.com/VickTyou/shop.git
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
