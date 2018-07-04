@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 8poko
-  Date: 2018/7/3
-  Time: 19:14
-  To change this template use File | Settings | File Templates.
---%>
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,79 +17,67 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <title>微信商城-首页</title>
     <%@include file="../../static/import.jsp" %>
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/vendor/normalize.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/normalize.min.css"/>
     <!-- 可选 -->
-    <link rel="stylesheet" href="${ctx}/static/vendor/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../static/vendor/font-awesome/css/font-awesome.min.css"/>
     <!-- 可选 -->
-    <link rel="stylesheet" href="${ctx}/static/vendor/swiper/swiper.min.css"/>
-    <link rel="stylesheet" href="${ctx}/static/css/common.css"/>
-    <link rel="stylesheet" href="${ctx}/static/css/index.css"/>
+    <link rel="stylesheet" href="../../static/vendor/swiper/swiper.min.css"/>
+    <link rel="stylesheet" href="../../static/css/common.css"/>
+    <link rel="stylesheet" href="../../static/css/index.css"/>
     <!-- 苹果设备在桌面上生成的快捷图标 -->
-    <link rel="apple-touch-icon" href="${ctx}/static/img/apple-touch-icon.png">
-    <link rel="icon" href="${ctx}/static/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png">
+    <link rel="icon" href="../../static/img/favicon.ico">
 </head>
 
 <body>
 <%@include file="../../static/nav.jsp" %>
-<section class="index-banner swiper-container">
-    <div class="swiper-wrapper">
-        <c:forEach items="${pageInfo.list}" var="prod">
-            <div class="swiper-slide">
-                <img src="${prod.picUrl}"/>
-                <div class="slide-layer">
-                    <div class="layer-inner">
-                        <p>微信价<span>${prod.price}</span></p>
-                        <p>微信商城</p>
-                        <div class="inner-right">
-                            <a href="info.html">立即购买</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
-</section>
-
-<section class="index-main">
-    <div id="index-main"></div>
-
-
-    <c:forEach items="${pageInfo.list}" var="prod">
-        <a href="info.html">
-            <div class="main-list">
-                <img src="${prod.picUrl}"/>
-                <div class="list-right">
-                    <p class="title">${prod.name}</p>
-                    <p class="details">${prod.introduction}</p>
-                    <p class="price">价格:<span>${prod.price}</span></p>
-                </div>
-            </div>
-        </a>
-    </c:forEach>
-</section>
-
-<script src="${ctx}/static/js/resize.js"></script>
-<script src="${ctx}/static/vendor/zepto.min.js"></script>
-<script src="${ctx}/static/vendor/swiper/swiper-3.4.0.jquery.min.js"></script>
-<script src="${ctx}/static/vendor/swiper/swiper.animate1.0.2.min.js"></script>
+<div id="recommendProducts"></div>
+<div class="loadding" id="loadding">
+    <span><i class="fa fa-spinner fa-pulse"></i> 正在加载数据...</span>
+</div>
+<script src="../../static/js/resize.js"></script>
+<script src="../../static/vendor/zepto.min.js"></script>
+<script src="../../static/vendor/swiper/swiper-3.4.0.jquery.min.js"></script>
+<script src="../../static/vendor/swiper/swiper.animate1.0.2.min.js"></script>
 <script>
+    window.onload = function () {
+        getRecommendProducts();
+        ajaxMainPage();
+    };
 
     var pageNo = 0;
     var pageSize = 5;
+    var toMainPageFlag = true;
 
-    $(function () {
-            var mySwiper = new Swiper('.swiper-container', {
-                loop: true,
-                autoplay: 5000,
-            });
+    /**
+     * 滚动加载
+     */
+    $(window).scroll(function () {
+        var documentHigh = $(document).height();
+        var scrollTop = $(document).scrollTop();
+        var windowHigh = $(window).height();
+        if (documentHigh - (scrollTop + windowHigh) <= 50) {
+            if (toMainPageFlag) {
+                ajaxMainPage();
+                // 判断加载到末尾
+                toMainPageFlag = false;
+                $('#loadding').html('已全部加载完成~');
+            }
         }
-    );
+    });
 
-
+    /**
+     * 列表添加数据
+     *
+     * @param products 需要添加的产品信息
+     */
     function addIndexMain(products) {
         var html = [];
+        html.push("<section class=\"index-main\">")
         for (var i = 0; i < products.length; i++) {
+            html.push("<a href=\"info/" + products[i].id + "\">")
             html.push("<div class=\"main-list\">");
+            html.push("<img src=\"" + products[i].picUrl + "\"/>");
             switch (products[i].flag) {
                 case 1:
                     html.push("<div class=\"trangle-hot\">");
@@ -114,8 +96,6 @@
                 default:
                     break;
             }
-
-            html.push("<img src=\"" + products[i].picUrl + "\"/>");
             html.push("<div class=\"list-right\">");
             html.push("<p class=\"title\">" + products[i].name + "</p>");
             html.push("<p class=\"details\">" + products[i].introduction + "</p>");
@@ -124,31 +104,101 @@
             html.push("</div>");
             html.push("</a>");
         }
-        console.info($('#index-main'));
-        $('#index-main').html(html);
+        html.push("</section>");
+        $('#loadding').before(html.join(""));
     }
 
+    /**
+     * 发送ajax请求产品数据
+     */
     function ajaxMainPage() {
         $.ajax(
             {
-                url: "${ctx}/page/mainPage",
+                url: "${ctx}/product/products",
                 type: "post",
-                dateType: "json",
-                date: {
-                    "pageNo": pageNo + 1,
+                dataType: "json",
+                data: {
+                    "pageNo": pageNo = pageNo + 1,
                     "pageSize": pageSize
                 },
                 success: function (result) {
                     var products = result.list;
                     addIndexMain(products);
+                    // 判断加载到末尾
+                    if (products.length < pageSize) {
+                        $('#loadding').html('已全部加载完成~');
+                        toMainPageFlag = false;
+                    } else {
+                        toMainPageFlag = true;
+                    }
                 }
             });
     }
 
-    ajaxMainPage();
+    /**
+     * 获取推荐商品
+     */
+    function getRecommendProducts() {
+        $.ajax({
+            url: "${ctx}/product/recommendProducts",
+            dateType: "json",
+            success: function (data) {
+                addrecommendProducts(data);
+            }
+        })
+    }
 
+    /**
+     * 添加推荐商品到页面
+     *
+     * @param recommendProducts
+     */
+    function addrecommendProducts(recommendProducts) {
+        var html = ["<section class=\"index-banner swiper-container\">"];
+        html.push("<div class=\"swiper-wrapper\">");
+        for (var i = 0; i < recommendProducts.length; i++) {
+            html.push("<div class=\"swiper-slide\">");
+            html.push("<img src=\"" + recommendProducts[i].picUrl + "\"/>");
+            html.push("<div class=\"slide-layer\">");
+            html.push("<div class=\"layer-inner\">");
+            html.push("<p>微信价<span>" + recommendProducts[i].price + "</span></p>");
+            html.push("<p>微信商城</p>");
+            html.push("<div class=\"inner-right\">");
+            html.push("<a href=\"info/" + recommendProducts[i].id + "\">立即购买</a>");
+            html.push("</div>");
+            html.push("</div>");
+            html.push("</div>");
+            html.push("</div>");
+        }
+        html.push("</div>");
+        html.push("</section>");
+        $("#recommendProducts").replaceWith(html.join(''));
+
+        var mySwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: 5000,
+        });
+    }
+
+    /**
+     *  动态加载 js/css
+     */
+    function loadjscssfile(filename, filetype) {
+        if (filetype == "js") { //判定文件类型
+            var fileref = document.createElement('script')//创建标签
+            fileref.setAttribute("type", "text/javascript")//定义属性type的值为text/javascript
+            fileref.setAttribute("src", filename)//文件的地址
+        }
+        else if (filetype == "css") { //判定文件类型
+            var fileref = document.createElement("link")
+            fileref.setAttribute("rel", "stylesheet")
+            fileref.setAttribute("type", "text/css")
+            fileref.setAttribute("href", filename)
+        }
+        if (typeof fileref != "undefined")
+            document.getElementsByTagName("head")[0].appendChild(fileref)
+    }
 </script>
 </body>
-
 
 </html>

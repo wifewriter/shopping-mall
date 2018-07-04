@@ -9,7 +9,7 @@
 <header class="header-wrapper">
     <ul class="header-list">
         <li class="list-active">
-            <a href="#">
+            <a href="/page/toMainPage">
                 <i class="fa fa-2x fa-home"></i>
                 <p>首页</p>
             </a>

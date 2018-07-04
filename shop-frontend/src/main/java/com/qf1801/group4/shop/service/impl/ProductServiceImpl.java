@@ -5,7 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.qf1801.group4.shop.dao.ShopProductMapper;
 import com.qf1801.group4.shop.entity.ShopProduct;
 import com.qf1801.group4.shop.service.ProductService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -40,5 +39,19 @@ public class ProductServiceImpl implements ProductService {
         PageHelper.startPage(pageNo, pagSize);
         List<ShopProduct> shopProducts = shopProductMapper.selectByExample(e);
         return new PageInfo(shopProducts);
+    }
+
+    @Override
+    public List<ShopProduct> getRecommendProducts() {
+        Example e = new Example(ShopProduct.class);
+        Example.Criteria criteria = e.createCriteria();
+        criteria.andEqualTo("recommend", 1);
+        e.and(criteria);
+        return shopProductMapper.selectByExample(e);
+    }
+
+    @Override
+    public ShopProduct getOne(String id) {
+        return shopProductMapper.selectByPrimaryKey(id);
     }
 }
