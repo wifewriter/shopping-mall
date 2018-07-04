@@ -17,16 +17,16 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <title>微信商城-首页</title>
     <%@include file="../../static/import.jsp" %>
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/vendor/normalize.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/normalize.min.css"/>
     <!-- 可选 -->
-    <link rel="stylesheet" href="${ctx}/static/vendor/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../static/vendor/font-awesome/css/font-awesome.min.css"/>
     <!-- 可选 -->
-    <link rel="stylesheet" href="${ctx}/static/vendor/swiper/swiper.min.css"/>
-    <link rel="stylesheet" href="${ctx}/static/css/common.css"/>
-    <link rel="stylesheet" href="${ctx}/static/css/index.css"/>
+    <link rel="stylesheet" href="../../static/vendor/swiper/swiper.min.css"/>
+    <link rel="stylesheet" href="../../static/css/common.css"/>
+    <link rel="stylesheet" href="../../static/css/index.css"/>
     <!-- 苹果设备在桌面上生成的快捷图标 -->
-    <link rel="apple-touch-icon" href="${ctx}/static/img/apple-touch-icon.png">
-    <link rel="icon" href="${ctx}/static/img/favicon.ico">
+    <link rel="apple-touch-icon" href="../../static/img/apple-touch-icon.png">
+    <link rel="icon" href="../../static/img/favicon.ico">
 </head>
 
 <body>
