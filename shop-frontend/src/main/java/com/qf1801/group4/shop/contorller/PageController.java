@@ -32,7 +32,7 @@ public class PageController {
     @RequestMapping("mainPage")
     @ResponseBody
     public PageInfo mainPage(Model model, Integer pageNo, Integer pageSize) {
-        PageInfo pageInfo = productService.get(FIST_PAGE_NO, DEFULT_PAG_SIZE, null);
+        PageInfo pageInfo = productService.get(pageNo, pageSize, null);
         return pageInfo;
     }
 
