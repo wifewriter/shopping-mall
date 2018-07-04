@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="shop-frontend:war">
-    <output-path>$PROJECT_DIR$/shop-frontend/target</output-path>
-    <root id="archive" name="shop-frontend-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="shop-frontend:war exploded" />
-    </root>
-  </artifact>
-</component>

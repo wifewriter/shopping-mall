@@ -10,3 +10,10 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+<<<<<<< HEAD
+/.gitee/
+/.idea/
+/.settings/
+/.project
+=======
+>>>>>>> branch 'master' of https://gitee.com/VickTyou/shop.git
