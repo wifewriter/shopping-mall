@@ -21,4 +21,11 @@ public class SysUserServiceImpl implements SysUserService {
 		return sysUser;
 	}
 
+
+	@Override
+	public void addSysUser(SysUser sysUser) {
+		sysUserMapper.insert(sysUser);
+		
+	}
+
 }

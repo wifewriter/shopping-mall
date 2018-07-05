@@ -14,5 +14,7 @@
 <p>index</p>
 <%--location = '<%=request.getContextPath()%>/page/mainPage';--%>
 <a href="<%=request.getContextPath()%>/page/toMainPage">toMainPage</a>
+<a href="<%=request.getContextPath()%>/user/toLogin">toLogin</a>
+<a href="<%=request.getContextPath()%>/user/toRegister">toRegister</a>
 </body>
 </html>

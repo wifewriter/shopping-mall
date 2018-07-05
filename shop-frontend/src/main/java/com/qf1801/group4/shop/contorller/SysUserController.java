@@ -1,52 +1,134 @@
 package com.qf1801.group4.shop.contorller;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.google.code.kaptcha.Constants;
 import com.qf1801.group4.shop.common.Constant;
 import com.qf1801.group4.shop.entity.SysUser;
 import com.qf1801.group4.shop.service.SysUserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
-
+@RequestMapping("user")
 public class SysUserController {
-	//账号或密码错误
-	 private static final int MSG_ONE = 1;
-	 //账号别禁用
-	 private static final int MSG_TWO = 2;
-	 //验证码错误
-	 private static final int MSG_THREE = 3;
+	 /**
+	 * 账号或密码错误
+	 */
+	private static final int ACCOUNT_OR_PASSWORD_ERROR = 1;
+	 /**
+	 * 账号被禁用
+	 */
+	private static final int FORBIDDEN = 2;
+	 /**
+	 * 验证码错误
+	 */
+	private static final int VERIFICATION_ERROR = 3;
+	/**
+	 * 登录成功
+	 */
+	private static final int SUCCEED = 4;
+	
+	/**
+	 * 账号可用
+	 */
+	private static final int USABLE=1;
+	/**
+	 * 账号不可用
+	 */
+	private static final int NOT_USABLE=0;
 	 
-	 
+	 @Autowired
 	 private SysUserService userService;
+	 
+	 @RequestMapping("toLogin")
+	 public String  toLogin() {
+		return "login";
+		
+	}
 	 
 	 
 	 /**
 		 * 登录
 		 */
-		@RequestMapping("/login")
-		public void login(SysUser sysUser, String validateCode, HttpSession session, Model model){
+		@RequestMapping("login")
+		@ResponseBody
+		public int login(SysUser sysUser, String validateCode, HttpSession session){
 			String rand = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
-			if(rand.equals(validateCode)){
+			int Num=0;
+			if(!rand.equals(validateCode)){
 				SysUser user = userService.get(sysUser);
 				if(user==null){
-					model.addAttribute(Constant.MSG_INFO,MSG_ONE );
+					Num=ACCOUNT_OR_PASSWORD_ERROR;
+					return Num;
 				}else{
+					
 					if(user.getStatus()==Constant.STATUS_TWO){
-						model.addAttribute(Constant.MSG_INFO,MSG_TWO);
+						Num= FORBIDDEN;
+						return Num;
 					}
 					//登录成功
 					if(user.getStatus()==Constant.STATUS_ONE){
 						session.setAttribute("eamil", user.getEmail());
 						session.setAttribute("username", user.getUsername());					
-						model.addAttribute(Constant.MSG_INFO, true);
+						Num=SUCCEED;
+						return Num;
 					}
 				}
 			}else{
-				model.addAttribute(Constant.MSG_INFO,MSG_THREE);
+				Num=VERIFICATION_ERROR;
+				return Num;
 			}
+			return Num;
+		}
+		
+		 /**
+		 * 到注册页面
+		 */
+		@RequestMapping("toRegister")
+		 public String  toRegister() {
+			return "register";
+			
+		}
+		 
+		 
+		 /**
+		 * 验证账号唯一性
+		 * 
+		 */
+		@RequestMapping("validateEmail")
+		 @ResponseBody
+		 public int validateEmail(SysUser sysUser){
+			 int Num=NOT_USABLE;
+			 SysUser user = userService.get(sysUser);
+			 if(user==null){
+				 Num=USABLE;
+				 return Num;
+			 }else{
+				 return Num; 
+			 }
+		 }
+		
+		 /**
+		 * 新增账号
+		 * 
+		 */
+		@RequestMapping("register")
+		public String register(SysUser sysUser){
+			 
+			 String id = UUID.randomUUID().toString(); 
+			 sysUser.setId(id);
+			 sysUser.setStatus(1);
+			 userService.addSysUser(sysUser);
+			return "login";
+			
 		}
 }
