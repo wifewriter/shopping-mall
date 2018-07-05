@@ -1,15 +1,14 @@
 package com.qf1801.group4.shop.contorller;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.google.code.kaptcha.Constants;
 import com.qf1801.group4.shop.common.Constant;
 import com.qf1801.group4.shop.entity.SysUser;
 import com.qf1801.group4.shop.service.SysUserService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 

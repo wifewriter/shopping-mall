@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qf1801.group4.shop..ShopProductCategoryMapper">
-  <resultMap id="BaseResultMap" type="com.qf1801.group4.shop.entity.ShopProductCategory">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="pid" jdbcType="VARCHAR" property="pid" />
-    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
-    <result column="status" jdbcType="TINYINT" property="status" />
-  </resultMap>
+<mapper namespace="com.qf1801.group4.shop.dao.ShopProductCategoryMapper">
+    <resultMap id="BaseResultMap" type="com.qf1801.group4.shop.entity.ShopProductCategory">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="pid" jdbcType="VARCHAR" property="pid"/>
+        <result column="category_name" jdbcType="VARCHAR" property="categoryName"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+    </resultMap>
+    <select id="getOne" resultType="com.qf1801.group4.shop.entity.ShopProductCategory" parameterType="String">
+    select * from shop_product_category where id = #{id};
+  </select>
+
 </mapper>

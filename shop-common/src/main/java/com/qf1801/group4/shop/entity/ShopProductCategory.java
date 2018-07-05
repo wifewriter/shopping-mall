@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
 @Table(name = "shop_product_category")
 public class ShopProductCategory {
@@ -15,6 +16,8 @@ public class ShopProductCategory {
 
     @Column(name = "category_name")
     private String categoryName;
+
+    private List<ShopProduct> shopProducts;
 
     /**
      * 1、启用；2、禁用
@@ -79,5 +82,14 @@ public class ShopProductCategory {
      */
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public List<ShopProduct> getShopProducts() {
+        return shopProducts;
+    }
+
+    public ShopProductCategory setShopProducts(List<ShopProduct> shopProducts) {
+        this.shopProducts = shopProducts;
+        return this;
     }
 }

@@ -15,13 +15,13 @@ import java.util.List;
 @RequestMapping("product")
 @ResponseBody
 public class ProductController {
-
     @Autowired
     private ProductService productService;
 
     @RequestMapping("products")
     public PageInfo mainPage(Model model, Integer pageNo, Integer pageSize) {
         PageInfo pageInfo = productService.get(pageNo, pageSize, null);
+
         return pageInfo;
     }
 
@@ -34,6 +34,7 @@ public class ProductController {
     public ShopProduct getProduct(String productId) {
         return productService.getOne(productId);
     }
-
-
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

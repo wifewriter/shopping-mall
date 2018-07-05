@@ -53,24 +53,23 @@
                 <span>购买数量:</span>
             </div>
             <div class="bottom-inner">
-                <div id="buyCount" class="inner-Reduction">
+                <div id="buyCountSub" class="inner-Reduction">
 							-
 						</div>
-                <input class="input" type="text"
+                <input id="buyCount" class="input" type="text"
                        style="width: 1.2rem;height: .3rem;border: none;text-align: center;color: #990000;font-size: .16rem;font-weight: bold;position: absolute;top: 0;left: 21%;"
                        value="1"/>
-                <div class="inner-plus">
+                <div id="buyCountPlu" class="inner-plus">
 							+
 						</div>
             </div>
+            <span id="buyCountMsg"></span>
         </div>
     </div>
 
     <div class="container">
-
         <p class="container-title">详细说明</p>
         <p id="description" class="container-details">
-            沪江英语网是免费的英语学习网站,提供白加得151的英文怎么说信息,包含白加得151的英文怎么说的相关学习资料、单词测试、评论、学习推荐等信息。</p>
         <div class="container-img">
             <img src="/static/img/product1.png" style="width: 9rem;max-height: 7.5rem;"/>
         </div>
@@ -85,6 +84,8 @@
 
 <script src="${ctx}/static/js/resize.js"></script>
 <script>
+
+    var $buyCountMsg = $("#buyCountMsg");
 
     /**
      * 获取取数据
@@ -110,13 +111,37 @@
      * @param info
      */
     function addInfo(info) {
-        console.info($("#picUrl"));
-        $("#picUrl").attr("src",info.picUrl);
+        $("#picUrl").attr("src", info.picUrl);
         $("#name").html(info.name);
         $("#introduction").html(info.introduction);
         $("#price").html(info.price);
         $("#number").html(info.number);
         $("#description").html(info.description);
+    }
+
+    $("#buyCountSub").click(function () {
+        var buyCount = parseInt($("#buyCount").val());
+        if (buyCount > 0) {
+            cleanBuyCountMsg();
+            $("#buyCount").val(buyCount - 1);
+        } else {
+            $buyCountMsg.html("你已经没有购买商品了~~~")
+        }
+    });
+
+    $("#buyCountPlu").click(function () {
+        var buyCount = parseInt($("#buyCount").val());
+        var number = $("#number").html();
+        if (buyCount < number) {
+            cleanBuyCountMsg();
+            $("#buyCount").val(buyCount + 1);
+        } else {
+            $buyCountMsg.html("土豪！你已经把东西买光了~~~")
+        }
+    });
+
+    function cleanBuyCountMsg() {
+        $buyCountMsg.html("");
     }
 
     getInfo();

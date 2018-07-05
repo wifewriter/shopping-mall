@@ -45,6 +45,8 @@ public class ShopProduct {
 
     private String description;
 
+    private ShopProductCategory shopProductCategory;
+
     /**
      * @return id
      */
@@ -209,6 +211,15 @@ public class ShopProduct {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public ShopProductCategory getShopProductCategory() {
+        return shopProductCategory;
+    }
+
+    public ShopProduct setShopProductCategory(ShopProductCategory shopProductCategory) {
+        this.shopProductCategory = shopProductCategory;
+        return this;
     }
 
     @Override
