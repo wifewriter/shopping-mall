@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
             Set<String> keySet = params.keySet();
             for (String key : keySet) {
                 // 非id的字符串用模糊查询
-                if (key instanceof String && !key.contains("id") && !key.contains("Id")) {
+                if (key.contains("String")&& !key.contains("id") && !key.contains("Id")) {
                     c.andLike(key, ((String) params.get(key)));
                 } else {
                     c.andEqualTo(key, params.get(key));

@@ -21,10 +21,14 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("products")
-    public PageInfo mainPage(Model model, Integer pageNo, Integer pageSize, String categoryId) {
+    public PageInfo mainPage(Model model, Integer pageNo, Integer pageSize, String categoryId,String flag) {
         Map<String, Object> params = new HashMap<>();
         if (categoryId != null) {
         params.put("shopProductCategoryId", categoryId);
+        }
+        if (flag != null) {
+            int flagCondition = Integer.parseInt(flag);
+            params.put("flag", flagCondition);
         }
         PageInfo pageInfo = productService.get(pageNo, pageSize, params);
         return pageInfo;
