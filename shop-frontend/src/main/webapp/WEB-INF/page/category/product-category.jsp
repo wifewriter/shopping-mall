@@ -78,14 +78,16 @@
      */
     $(function () {
         getCategory();
+        var hotSell = '1';
         getProducts("/product/products", {
-            "pageNo": pageNo = pageNo + 1,
-            "pageSize": pageSize
+            "pageNo": pageNo = 1,
+            "pageSize": pageSize,
+            "flag" : hotSell
         });
     });
 
     /**
-     * 滚动加载
+     * 滚动加载事件，发送ajax请求products数据
      */
     $(window).scroll(function () {
         var documentHigh = $(document).height();
@@ -103,14 +105,13 @@
     });
 
     /**
-     * 添加元素到菜单
+     * 添加元素到左侧菜单
      *
      * @param categorys
      */
     function addMenu(categorys) {
         var menus = [];
         $.each(categorys, function (key, values) {
-            var mainMenus = [key];
             var subMenus = [];
             $.each(values, function () {
                 var params = {
