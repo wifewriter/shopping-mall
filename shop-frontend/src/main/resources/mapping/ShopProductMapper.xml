@@ -38,4 +38,6 @@
     <select id="getProdWitchShopProductCategory" parameterType="String" resultMap="WitchShopProductCategory">
         select * from shop_product where id = #{id};
     </select>
+   
+    
 </mapper>

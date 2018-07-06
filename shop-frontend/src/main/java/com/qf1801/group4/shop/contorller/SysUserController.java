@@ -1,14 +1,12 @@
 package com.qf1801.group4.shop.contorller;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -61,7 +59,7 @@ public class SysUserController {
 		 */
 		@RequestMapping("login")
 		@ResponseBody
-		public int login(SysUser sysUser, String validateCode, HttpSession session){
+		public int login(SysUser sysUser, String remember, String validateCode, HttpSession session){
 			String rand = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
 			int Num=0;
 			if(!rand.equals(validateCode)){
@@ -78,7 +76,10 @@ public class SysUserController {
 					//登录成功
 					if(user.getStatus()==Constant.STATUS_ONE){
 						session.setAttribute("eamil", user.getEmail());
-						session.setAttribute("username", user.getUsername());					
+						session.setAttribute("username", user.getUsername());
+						if (remember != null) {
+			                session.setAttribute("remember", remember);
+			            }
 						Num=SUCCEED;
 						return Num;
 					}
@@ -131,4 +132,22 @@ public class SysUserController {
 			return "login";
 			
 		}
+		
+		
+		@RequestMapping("logout")
+		public String logout(HttpServletRequest request){
+			// 让服务器中的Session对象失败
+			 request.getSession().invalidate();
+			return "index";
+			
+		}	
+		/**
+		 * 测试
+		 */
+		@RequestMapping("uu")
+		public String uu(){
+			return "uu";
+			
+		}
+		
 }

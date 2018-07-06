@@ -17,19 +17,23 @@
 		<li><a href="productlist.html"> <i class="fa fa-2x fa-th"></i>
 				<p>商品分类</p>
 		</a></li>
-		<li><a href="shopcar.html"> <i
+		<li><a href="${ctx }/shopcar/toShopCar"> <i
 				class="fa fa-2x fa-shopping-cart"></i>
 				<p>购物车</p>
 		</a></li>
 		<c:if test="${not empty sessionScope.username }">
 			<li><a href="userinfo.html"> <i class="fa fa-2x fa-user"></i>
 					<p>用户中心</p>
-			</a></li>
+			</a>
+			<a href="${ctx }/user/logout">注销</a>
+			</li>
 		</c:if>
 		<c:if test="${empty sessionScope.username }">
-		<li><a id="loginButton" href="javascript:(0)" > <i class="fa fa-2x fa-user"></i>
+		<li><a id="loginButton" href="javascript:(0)" >
+		 <i class="fa fa-2x fa-user"></i>
 				<p>登录</p>
-		</a></li>
+			</a>
+		</li>
 		</c:if>
 	</ul>
 	
@@ -104,7 +108,7 @@
 		</div>
 	</div>
 	
-	
+	<script src="${ctx }/static/vendor/jquery.cookie.js"></script>
 	<script>
 	$(function(){
 		$('#loginButton').click(function () {
@@ -114,7 +118,13 @@
 			});
 		})
 		
-		
+			// 在当前登录页面时，就检查在Cookie中是否有username信息，如果有就显示到帐号的输入框上，并选中记住帐号的复选框。
+	    	var email = $.cookie('email');
+	    	if (email != null && email != '') {
+	    		$('#email').val(email);
+	    		$('#remember').prop('checked', true);
+	    	}
+
 			/**
 			 * 验证码切换
 			 */
@@ -141,8 +151,31 @@
 				var url = "${ctx}/user/login";
 				$.post(url, params, function(data) {
 					if (data == 4) {					
-						$msg.css('color', 'green').html('登录成功');		
+						$msg.css('color', 'green').html('登录成功');	
+						
+						alert('${sessionScope.email}');
+						if ('${sessionScope.remember == "remember"}') {
+				    		// 向Cookie中存放一个username信息
+				    		// 第一个参数（字符串）：Cookie的名称，方便后续的取值
+				    		// 第二个参数（字符串）：Cookie的值，如果存的是中文，jQuery Cookie插件会对其进行地址栏编码
+				    		// 第三个参数（对象）： 对象的属性expires表示Cookie存储的天数
+				    		$.cookie('email', '${sessionScope.email}', {expires: 15 });
+						} else {
+							// 如果记住帐号的多选框未被选中，就取消Cookie信息
+							$.cookie('email', '', {expires: 0});
+						}
 						$('#myModal').modal('hide');
+						var html=[];
+						html.push('<a href="${ctx}/user/uu" >');
+						html.push('<i class="fa fa-2x fa-user"></i>');
+						html.push('<p>个人中心</p>');
+						html.push('</a>');
+						html.push('<a href="${ctx }/user/logout">注销</a>');
+						$("#loginButton").replaceWith(html.join(""));
+
+						
+						
+						
 					} else if (data == 1) {
 						$msg.css('color', '#c33').html('账号或密码错误');				
 					} else if (data == 2) {
