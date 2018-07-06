@@ -1,8 +1,7 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8"/>
     <meta name="description" content=""/>
@@ -19,12 +18,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <title>微信商城-产品详细</title>
     <%@include file="../../../static/import.jsp" %>
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/vendor/normalize.min.css"/>
-    <!-- 可选 -->
-    <link rel="stylesheet" href="${ctx}/static/vendor/font-awesome/css/font-awesome.min.css"/>
-    <!-- 可选 -->
-    <link rel="stylesheet" href="${ctx}/static/css/common.css"/>
-    <link rel="stylesheet" href="${ctx}/static/css/info.css"/>
     <!-- 苹果设备在桌面上生成的快捷图标 -->
     <link rel="apple-touch-icon" href="${ctx}/static/img/apple-touch-icon.png">
     <link rel="icon" href="${ctx}/static/img/favicon.ico">
@@ -33,7 +26,6 @@
 <body>
 <%@include file="../../../static/nav.jsp" %>
 <section style="width: 100%; height: .6rem;"></section>
-
 <section class="info-wrapper">
     <div class="content">
         <div class="content-top">

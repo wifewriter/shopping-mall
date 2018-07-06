@@ -32,7 +32,7 @@
         <result column="description" jdbcType="LONGVARCHAR" property="description"/>
         <association property="shopProductCategory" column="shop_product_category_id"
                      select="com.qf1801.group4.shop.dao.ShopProductCategoryMapper.getOne"
-                     javaType="ShopProductCategory"/>
+                     javaType="ShopProductCategory" />
     </resultMap>
 
     <select id="getProdWitchShopProductCategory" parameterType="String" resultMap="WitchShopProductCategory">

@@ -59,9 +59,6 @@
         if (documentHigh - (scrollTop + windowHigh) <= 50) {
             if (toMainPageFlag) {
                 ajaxMainPage();
-                // 判断加载到末尾
-                toMainPageFlag = false;
-                $('#loadding').html('已全部加载完成~');
             }
         }
     });
@@ -112,6 +109,10 @@
      * 发送ajax请求产品数据
      */
     function ajaxMainPage() {
+        // 取消异步，处理完一个请求后才再次请求
+        $.ajaxSetup({
+            async: false
+        });
         $.ajax(
             {
                 url: "${ctx}/product/products",

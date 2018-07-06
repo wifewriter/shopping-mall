@@ -51,4 +51,9 @@ public class PageController {
         return "product/info";
     }
 
+    @RequestMapping("productCategory")
+    public String gotoProductCategory() {
+        return "category/product-category";
+    }
+
 }

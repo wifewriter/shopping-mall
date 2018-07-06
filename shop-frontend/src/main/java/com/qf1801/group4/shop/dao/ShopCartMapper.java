@@ -10,4 +10,6 @@ import com.qf1801.group4.shop.entity.ShopProduct;
 public interface ShopCartMapper extends Mapper<ShopCart> {
 	
 	   List<ShopProduct> getShopProduct(String id);
+	  
+	 //  void deleteShopCart(String cartId);
 }
