@@ -12,6 +12,9 @@
     </resultMap>
     <select id="getOne" resultType="com.qf1801.group4.shop.entity.ShopProductCategory" parameterType="String">
     select * from shop_product_category where id = #{id};
-  </select>
+    </select>
+    <select id="getMainMenuAct" resultType="com.qf1801.group4.shop.entity.ShopProductCategory">
+        select id,category_name from shop_product_category where status = 1 and pid is null ;
+    </select>
 
 </mapper>

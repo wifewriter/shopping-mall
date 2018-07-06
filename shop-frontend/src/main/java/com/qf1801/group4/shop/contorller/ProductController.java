@@ -9,7 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("product")
@@ -19,9 +21,12 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("products")
-    public PageInfo mainPage(Model model, Integer pageNo, Integer pageSize) {
-        PageInfo pageInfo = productService.get(pageNo, pageSize, null);
-
+    public PageInfo mainPage(Model model, Integer pageNo, Integer pageSize, String categoryId) {
+        Map<String, Object> params = new HashMap<>();
+        if (categoryId != null) {
+        params.put("shopProductCategoryId", categoryId);
+        }
+        PageInfo pageInfo = productService.get(pageNo, pageSize, params);
         return pageInfo;
     }
 
@@ -35,6 +40,3 @@ public class ProductController {
         return productService.getOne(productId);
     }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com
