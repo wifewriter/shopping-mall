@@ -18,6 +18,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <title>微信商城-产品详细</title>
     <%@include file="../../../static/import.jsp" %>
+    <link rel="stylesheet" href="${ctx}/static/vendor/layer.css">
+    <script src="/static/vendor/layer/layer.js"></script>
     <!-- 苹果设备在桌面上生成的快捷图标 -->
     <link rel="apple-touch-icon" href="${ctx}/static/img/apple-touch-icon.png">
     <link rel="icon" href="${ctx}/static/img/favicon.ico">
@@ -70,17 +72,44 @@
 
     <div style="width: 100%; height: .5rem;"></div>
     <div class="plus-shopcar">
-        <a href="">加入购物车</a>
+        <%--<a id="plusShopcar" data-placement="top" tabindex="0" class="btn btn-lg " role="button" data-toggle="popover"--%>
+        <%--data-trigger="focus" title="Dismissible popover"--%>
+        <%--data-content="And here's some amazing content. It's very engaging.?">加入购物车</a>--%>
+
+        <a id="plusShopcar" class="btn" href="javascript:void(0)">加入购物车</a>
     </div>
 </section>
-
 <script src="${ctx}/static/js/resize.js"></script>
 <script>
 
+    $(function () {
+        $("[data-toggle='popover']").popover();
+    });
+
     var $buyCountMsg = $("#buyCountMsg");
+    var productId = "";
 
     /**
-     * 获取取数据
+     *加入商品到购物车
+     */
+    $('#plusShopcar').click(function () {
+        var buyCount = $('#buyCount').val();
+        $.post("/ShopCar/addToShopCar", {'shopProductId': productId, 'count': buyCount}, function (msg) {
+            if (msg == "success") {
+                layer.tips('添加成功', '#plusShopcar', {
+                    tips: [1, '#0FA6D8']
+                });
+            } else {
+                layer.tips('添加失败', '#plusShopcar', {
+                    tips: [1, '#d8000a']
+                })
+            }
+        });
+
+    });
+
+    /**
+     * 获取商品信息
      */
     function getInfo() {
         $.ajax(
@@ -109,6 +138,7 @@
         $("#price").html(info.price);
         $("#number").html(info.number);
         $("#description").html(info.description);
+        productId = info.id;
     }
 
     $("#buyCountSub").click(function () {
