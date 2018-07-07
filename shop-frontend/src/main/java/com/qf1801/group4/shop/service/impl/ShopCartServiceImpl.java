@@ -26,4 +26,10 @@ public class ShopCartServiceImpl implements ShopCartService {
 		
 	}
 
+	@Override
+	public int updateShopCart(ShopCart shopCart) {
+		return shopCartMapper.updateByPrimaryKeySelective(shopCart);
+//		return shopCartMapper.updateShopCart(shopCart);
+	}
+
 }

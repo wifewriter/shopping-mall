@@ -15,4 +15,9 @@
 		shop_product p WHERE c.shop_product_id=p.id AND
 		sys_user_id=#{id};
 	</select>
+	
+	<select id="updateShopCart" parameterType="ShopCart" resultType="Integer" >
+		update shop_cart set count = #{count} where id=#{id}
+	</select>
+	
 </mapper>

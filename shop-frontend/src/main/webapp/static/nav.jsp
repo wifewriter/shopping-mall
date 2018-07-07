@@ -16,12 +16,16 @@
         <c:if test="${not empty sessionScope.username }">
             <li><a href="userinfo.html"> <i class="fa fa-2x fa-user"></i>
                 <p>用户中心</p>
-            </a></li>
+            </a>
+            <a href="${ctx }/user/logout">注销</a>
+            </li>
         </c:if>
         <c:if test="${empty sessionScope.username }">
             <li><a id="loginButton" href="javascript:(0)"> <i class="fa fa-2x fa-user"></i>
                 <p>登录</p>
-            </a></li>
+            </a>
+            
+            </li>
         </c:if>
     </ul>
 
@@ -136,6 +140,7 @@
                 if (data == 4) {
                     $msg.css('color', 'green').html('登录成功');
                     $('#myModal').modal('hide');
+                    location="/page/toMainPage";
                 } else if (data == 1) {
                     $msg.css('color', '#c33').html('账号或密码错误');
                 } else if (data == 2) {

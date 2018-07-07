@@ -48,13 +48,19 @@ public class ShopProduct {
 	private String description;
 
 	private ShopProductCategory shopProductCategory;
-
+	
+	@Transient
 	private Integer cartCount;
-
+	
+	@Transient
 	private String cartId;
 	
 	@Transient
 	private Double subtotal;
+	
+	@Transient
+	private Double totalPrices;
+	
 
 	/**
 	 * @return id
@@ -258,6 +264,16 @@ public class ShopProduct {
 
 	public void setSubtotal(Double subtotal) {
 		this.subtotal = subtotal;
+	}
+	
+	
+
+	public Double getTotalPrices() {
+		return totalPrices;
+	}
+
+	public void setTotalPrices(Double totalPrices) {
+		this.totalPrices = totalPrices;
 	}
 
 	@Override

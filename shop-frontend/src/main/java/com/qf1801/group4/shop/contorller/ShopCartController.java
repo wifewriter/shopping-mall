@@ -25,25 +25,68 @@ public class ShopCartController {
 	 */
 	@RequestMapping("toShopCar")
 	public String toShopCar(HttpSession session, Model model) {
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("sysUserId");
+		//String id ="gawewqt";
+		//if(id != null || id !=""){
 		List<ShopProduct> shopProductList = shopCartService
-				.getShopCart("gawewqt");
+				.getShopCart(id);
+		Double totalPrices= 0.0;
 		for (int i = 0; i < shopProductList.size(); i++) {
 			Double price = shopProductList.get(i).getPrice();
 			Integer cartCount = shopProductList.get(i).getCartCount();
 			shopProductList.get(i).setSubtotal(price * cartCount);
+			totalPrices += price * cartCount;
 		}
-
+		model.addAttribute("totalPrices", totalPrices);
 		model.addAttribute("shopProductList", shopProductList);
 		return "shopcar";
+		//}
+		
+		
 	}
 	
+	/**
+	 * 购物车中删除商品
+	 * 
+	 */
 	@RequestMapping("deleteShopCart")
 	@ResponseBody
 	public Integer deleteShopCart(String cartId){
 		ShopCart shopCart=new ShopCart();
 		shopCart.setId(cartId);
 		return shopCartService.deleteShopCart(shopCart);
+	}
+	
+	/**
+	 * 点击'+'或'-'时修改数据库
+	 * 
+	 * 
+	 */
+	@RequestMapping("updateShopCart")
+	@ResponseBody
+	public Integer updateShopCart(String id,Integer count){
+		
+		ShopCart shopCart=new ShopCart();
+		shopCart.setId(id);
+		shopCart.setCount(count);
+		return shopCartService.updateShopCart(shopCart);
+	}
+	
+	/**
+	 * 清空购物车
+	 * 
+	 */
+	@RequestMapping("prugeShopCart")
+	@ResponseBody
+	public String prugeShopCart(HttpSession session){
+		String id = (String) session.getAttribute("sysUserId");
+		//String id = "gawewqt";
+		ShopCart shopCart=new ShopCart();
+		shopCart.setSysUserId(id);
+		if(shopCartService.deleteShopCart(shopCart)>0){
+			return "success";
+		}
+		return "fail";
 	}
 
 }

@@ -77,6 +77,7 @@ public class SysUserController {
 					if(user.getStatus()==Constant.STATUS_ONE){
 						session.setAttribute("eamil", user.getEmail());
 						session.setAttribute("username", user.getUsername());
+						session.setAttribute("sysUserId", user.getId());
 						if (remember != null) {
 			                session.setAttribute("remember", remember);
 			            }

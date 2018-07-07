@@ -12,4 +12,6 @@ public interface ShopCartService {
 	
 	int deleteShopCart(ShopCart shopCart);
 	
+	int updateShopCart(ShopCart shopCart);
+	
 }
