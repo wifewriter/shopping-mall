@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qf1801.group4.shop.dao.ShopCartMapper">
-  <resultMap id="BaseResultMap" type="com.qf1801.group4.shop.entity.ShopCart">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="shop_product_id" jdbcType="VARCHAR" property="shopProductId" />
-    <result column="count" jdbcType="INTEGER" property="count" />
-    <result column="sys_user_id" jdbcType="VARCHAR" property="sysUserId" />
-  </resultMap>
+	<resultMap id="BaseResultMap" type="com.qf1801.group4.shop.entity.ShopCart">
+		<!-- WARNING - @mbg.generated -->
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="shop_product_id" jdbcType="VARCHAR" property="shopProductId" />
+		<result column="count" jdbcType="INTEGER" property="count" />
+		<result column="sys_user_id" jdbcType="VARCHAR" property="sysUserId" />
+	</resultMap>
+	<select id="getShopProduct" parameterType="String"
+		resultType="com.qf1801.group4.shop.entity.ShopProduct">
+		SELECT p.*, c.count as cartCount,c.id as cartId FROM
+		shop_cart c,
+		shop_product p WHERE c.shop_product_id=p.id AND
+		sys_user_id=#{id};
+	</select>
+	
+	<select id="updateShopCart" parameterType="ShopCart" resultType="Integer" >
+		update shop_cart set count = #{count} where id=#{id}
+	</select>
+	
 </mapper>

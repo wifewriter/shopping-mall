@@ -76,7 +76,7 @@
         <%--data-trigger="focus" title="Dismissible popover"--%>
         <%--data-content="And here's some amazing content. It's very engaging.?">加入购物车</a>--%>
 
-        <a id="plusShopcar" class="btn" href="javascript:void(0)">加入购物车</a>
+        <a id="plusShopcar" href="javascript:void(0)">加入购物车</a>
     </div>
 </section>
 <script src="${ctx}/static/js/resize.js"></script>
@@ -96,13 +96,9 @@
         var buyCount = $('#buyCount').val();
         $.post("/ShopCar/addToShopCar", {'shopProductId': productId, 'count': buyCount}, function (msg) {
             if (msg == "success") {
-                layer.tips('添加成功', '#plusShopcar', {
-                    tips: [1, '#0FA6D8']
-                });
-            } else {
-                layer.tips('添加失败', '#plusShopcar', {
-                    tips: [1, '#d8000a']
-                })
+                layer.msg('添加成功');
+            } else if(msg == "userNoLogin"){
+                layer.msg('请先登录');
             }
         });
 

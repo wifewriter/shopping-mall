@@ -3,8 +3,11 @@ package com.qf1801.group4.shop.service.impl;
 import com.qf1801.group4.shop.dao.ShopProductCategoryMapper;
 import com.qf1801.group4.shop.entity.ShopProductCategory;
 import com.qf1801.group4.shop.service.CategoryService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
