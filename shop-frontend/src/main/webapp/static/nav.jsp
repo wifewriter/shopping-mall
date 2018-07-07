@@ -24,7 +24,7 @@
             <li><a id="loginButton" href="javascript:(0)"> <i class="fa fa-2x fa-user"></i>
                 <p>登录</p>
             </a>
-            
+
             </li>
         </c:if>
     </ul>

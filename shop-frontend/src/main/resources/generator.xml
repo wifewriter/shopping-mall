@@ -19,15 +19,16 @@
 			connectionURL="${db.url}" userId="${db.username}" password="${db.password}">
 		</jdbcConnection>
 
-		<javaModelGenerator targetPackage="generator.entity"
+		<javaModelGenerator targetPackage="entity"
 			targetProject="src/main/java/" />
 
-		<sqlMapGenerator targetPackage="generator.mapping" targetProject="src/main/resources" />
+		<sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources" />
 
 		<javaClientGenerator targetPackage="com.qf1801.group4.shop."
 			targetProject="src/main/java" type="XMLMAPPER" />
 
 		<table tableName="%">
+		<!--<table tableName="">-->
 			<generatedKey column="id" sqlStatement="JDBC" />
 		</table>
 	</context>

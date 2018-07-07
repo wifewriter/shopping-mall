@@ -1,0 +1,24 @@
+package com.qf1801.group4.shop.contorller;
+
+import com.qf1801.group4.shop.entity.ShopReceiveAddress;
+import com.qf1801.group4.shop.service.ShopReceiveAddressService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("shopReceiveAddress")
+@ResponseBody
+public class ShopReceiveAddressController {
+
+    @Autowired
+    private ShopReceiveAddressService shopReceiveAddressService;
+
+    @RequestMapping("getShopReceiveAddressByUserId")
+    public List<ShopReceiveAddress> getShopReceiveAddressByUserId(String userId) {
+        return shopReceiveAddressService.getShopReceiveAddressByUserId(userId);
+    }
+}

@@ -15,8 +15,8 @@ public class ShopCartServiceImpl implements ShopCartService {
 	private ShopCartMapper shopCartMapper;
 
 	@Override
-	public List<ShopProduct> getShopCart(String id) {
-		List<ShopProduct> list =shopCartMapper.getShopProduct(id);
+	public List<ShopProduct> getShopCartByUserId(String id) {
+		List<ShopProduct> list =shopCartMapper.getShopProductByUserId(id);
 		return list;
 	}
 
@@ -29,7 +29,6 @@ public class ShopCartServiceImpl implements ShopCartService {
 	@Override
 	public int updateShopCart(ShopCart shopCart) {
 		return shopCartMapper.updateByPrimaryKeySelective(shopCart);
-//		return shopCartMapper.updateShopCart(shopCart);
 	}
 
 }

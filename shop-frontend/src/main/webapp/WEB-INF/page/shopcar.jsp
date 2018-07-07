@@ -37,8 +37,7 @@
 </head>
 <body>
 	<%@include file="../../static/nav.jsp"%>
-
-	<section style="width: 100%; height: .6rem;"></section>
+	<div style="height: 80px;"></div>
 	<section id="shopCar" class="shopcar-container">
 		<c:if test="${empty shopProductList }">
 			<div class="container-inner" style="display: block;">
@@ -89,7 +88,7 @@
 					</div>
 					<div class="bottom-right">
 						<span class="price subtotal">${shopProduct.subtotal}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a class="fa fa-trash-o fa-1x right-delete del" href="javascript:void(0)"></a> 
+						<a class="fa fa-trash-o fa-1x right-delete del" href="javascript:void(0)"></a>
 						<input class="cartId" type="hidden" value="${shopProduct.cartId }">
 					</div>
 				</div>
@@ -102,12 +101,12 @@
 	<section style="width: 100%; height: .5rem;"></section>
 	<footer class="shopcar-footer">
 		<div class="footer-left">
-			<a id="cleanShopCar" class="fa fa-trash-o fa-1x" href="javascript:void(0)"></a> 
-			<span>清空</span>&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a id="cleanShopCar" class="fa fa-trash-o fa-1x" href="javascript:void(0)"></a>
+			<span>清空</span>&nbsp;&nbsp;&nbsp;&nbsp;
 			<span class="left-price" >总价：￥ <span id="totalPrices">${totalPrices }</span></span>
 		</div>
 		<div class="footer-right">
-			<a href="orderlist.html">结算</a>
+			<a href="/page/${sessionScope.sysUserId}/toOrderList">结算</a>
 		</div>
 	</footer>
 
@@ -123,22 +122,22 @@
 								var inventory = $(this).next().val();
 								var totalPrices = Number($('#totalPrices').html());
 								var cartId =$(this).parent().parent().next().find('.cartId').val();
-								
+
 								if (initial < inventory) {
 									var ultimately = (initial + 1);
-									
+
 									$(this).prev().val(ultimately);
 									var univalence = Number($(this).prev().prev().val());
 
 									var subtotal = univalence * ultimately;
 									$.post('${ctx}/shopcar/updateShopCart', {'id' : cartId,'count':ultimately},function(){
-									
+
 									});
-								
+
 									$(this).parent().parent().next().find(
 									".subtotal").html(subtotal);
 								$('#totalPrices').html(totalPrices+univalence);
-									
+
 								} else {
 									$(this).parent().next().html('库存不足');
 								}
@@ -159,7 +158,7 @@
 							$(this).parent().parent().next().find(".subtotal")
 									.html(subtotal);
 							$.post('${ctx}/shopcar/updateShopCart', {'id' : cartId,'count':ultimately},function(){
-							
+
 							});
 							$('#totalPrices').html(totalPrices-univalence);
 							$(this).parent().next().html('');
@@ -177,8 +176,7 @@
 						var nums = value * num;
 						//alert(nums);
 						if (value > 0 && value <= values) {
-							$(this).parent().parent().next().find(".subtotal")
-									.html(nums)
+                            $(this).parent().parent().next().find(".subtotal").html(nums);
 							$(this).parent().next().html('');
 						} else {
 							$(this).parent().next().html('库存不足');

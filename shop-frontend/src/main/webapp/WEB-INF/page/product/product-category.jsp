@@ -10,21 +10,22 @@
 <html>
 <head>
     <title>商品分类</title>
-    <%@include file="../../../static/import.jsp" %>
-    <link rel="stylesheet" type="text/css" href="${ctx}/static/vendor/normalize.min.css"/>
+    <%@include file="/static/import.jsp" %>
+    <link rel="stylesheet" type="text/css" href="/static/vendor/normalize.min.css"/>
     <!-- 可选 -->
-    <link rel="stylesheet" href="${ctx}/static/vendor/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/static/vendor/font-awesome/css/font-awesome.min.css"/>
     <!-- 可选 -->
-    <link rel="stylesheet" href="${ctx}/static/vendor/swiper/swiper.min.css"/>
-    <link rel="stylesheet" href="${ctx}/static/css/common.css"/>
-    <link rel="stylesheet" href="${ctx}/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/vendor/swiper/swiper.min.css"/>
+    <link rel="stylesheet" href="/static/css/common.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
     <!-- 苹果设备在桌面上生成的快捷图标 -->
     <link rel="apple-touch-icon" href="${ctx}/static/img/apple-touch-icon.png">
     <link rel="icon" href="${ctx}/static/img/favicon.ico">
 </head>
 <body>
-<%@include file="../../../static/nav.jsp"%>
-<div style="height: 80px;"></div>
+<%@include file="/static/nav.jsp"%>
+<div style="height: 95px;"></div>
+
 <div class="container-fluid">
     <div id="categoryMenu" class="col-lg-3"></div>
     <div id="rightBox" class="col-lg-9">
@@ -33,11 +34,11 @@
         </div>
     </div>
 </div>
-<script src="../../static/js/resize.js"></script>
-<script src="../../static/vendor/zepto.min.js"></script>
-<script src="../../static/vendor/swiper/swiper-3.4.0.jquery.min.js"></script>
-<script src="../../static/vendor/swiper/swiper.animate1.0.2.min.js"></script>
-<script src="${ctx}/static/vendor/template.js"></script>
+<script src="/static/js/resize.js"></script>
+<script src="/static/vendor/zepto.min.js"></script>
+<script src="/static/vendor/swiper/swiper-3.4.0.jquery.min.js"></script>
+<script src="/static/vendor/swiper/swiper.animate1.0.2.min.js"></script>
+<script src="/static/vendor/template.js"></script>
 
 <script id="leftMenu" type="text/html">
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

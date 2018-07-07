@@ -8,7 +8,7 @@
 		<result column="count" jdbcType="INTEGER" property="count" />
 		<result column="sys_user_id" jdbcType="VARCHAR" property="sysUserId" />
 	</resultMap>
-	<select id="getShopProduct" parameterType="String"
+	<select id="getShopProductByUserId" parameterType="String"
 		resultType="com.qf1801.group4.shop.entity.ShopProduct">
 		SELECT p.*, c.count as cartCount,c.id as cartId FROM
 		shop_cart c,

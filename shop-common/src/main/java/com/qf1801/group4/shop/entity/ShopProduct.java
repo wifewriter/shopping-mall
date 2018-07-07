@@ -1,12 +1,6 @@
 package com.qf1801.group4.shop.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import java.math.BigDecimal;
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "shop_product")
