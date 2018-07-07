@@ -59,10 +59,13 @@ public class SysUserController {
 		 */
 		@RequestMapping("login")
 		@ResponseBody
-		public int login(SysUser sysUser, String remember, String validateCode, HttpSession session){
+		public int login(SysUser sysUser, String remember, Integer count ,String validateCode, HttpSession session){
 			String rand = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
 			int Num=0;
-			if(!rand.equals(validateCode)){
+			 if (count >= 3 && !rand.equals(validateCode)) {
+		           
+		            return VERIFICATION_ERROR;
+		        }
 				SysUser user = userService.get(sysUser);
 				if(user==null){
 					Num=ACCOUNT_OR_PASSWORD_ERROR;
@@ -75,7 +78,7 @@ public class SysUserController {
 					}
 					//登录成功
 					if(user.getStatus()==Constant.STATUS_ONE){
-						session.setAttribute("eamil", user.getEmail());
+						session.setAttribute("email", user.getEmail());
 						session.setAttribute("username", user.getUsername());
 						session.setAttribute("sysUserId", user.getId());
 						if (remember != null) {
@@ -85,10 +88,6 @@ public class SysUserController {
 						return Num;
 					}
 				}
-			}else{
-				Num=VERIFICATION_ERROR;
-				return Num;
-			}
 			return Num;
 		}
 		

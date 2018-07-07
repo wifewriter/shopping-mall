@@ -34,6 +34,21 @@
 
 <link rel="stylesheet"
 	href="${ctx }/static/vendor/layer/mobile/need/layer.css" />
+	
+	
+<style>
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+</style>
+	
+	
 </head>
 <body>
 	<%@include file="../../../static/nav.jsp"%>
@@ -72,7 +87,7 @@
 					<div class="center-inner">
 						<div class="inner-Reduction subtract">-</div>
 						<input id="univalence" type="hidden" value="${shopProduct.price }">
-						<input class="shopcar-value quantity" type="text"
+						<input class="shopcar-value quantity" type="number"
 							style="width: 1.2rem; height: .3rem; border: none; text-align: center; color: #990000; font-size: .16rem; font-weight: bold; position: absolute; top: 0; left: 21%;" value="${shopProduct.cartCount }" />
 						<div class="inner-plus augment">+</div>
 
@@ -175,8 +190,11 @@
 
 						var num = Number($(this).prev().val());
 						var nums = value * num;
-						//alert(nums);
+						var cartId =$(this).parent().parent().next().find('.cartId').val();
 						if (value > 0 && value <= values) {
+						 	$.post('${ctx}/shopcar/updateShopCart', {'id' : cartId,'count':value},function(){
+								
+							});
 							$(this).parent().parent().next().find(".subtotal")
 									.html(nums)
 							$(this).parent().next().html('');
