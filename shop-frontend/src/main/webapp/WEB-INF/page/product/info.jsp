@@ -43,21 +43,21 @@
         </div>
 
         <div class="content-bottom">
-            <div class="bottom-text">
-                <span>购买数量:</span>
-            </div>
-            <div class="bottom-inner">
-                <div id="buyCountSub" class="inner-Reduction">
+                <div class="bottom-text">
+                    <span>购买数量:</span>
+                </div>
+                <div class="bottom-inner">
+                    <div id="buyCountSub" class="inner-Reduction">
 							-
 						</div>
-                <input id="buyCount" class="input" type="text"
-                       style="width: 1.2rem;height: .3rem;border: none;text-align: center;color: #990000;font-size: .16rem;font-weight: bold;position: absolute;top: 0;left: 21%;"
-                       value="1"/>
-                <div id="buyCountPlu" class="inner-plus">
+                    <input id="buyCount" class="input" type="text"
+                           style="width: 1.2rem;height: .3rem;border: none;text-align: center;color: #990000;font-size: .16rem;font-weight: bold;position: absolute;top: 0;left: 21%;"
+                           value="1"/>
+                    <div id="buyCountPlu" class="inner-plus">
 							+
 						</div>
-            </div>
-            <span id="buyCountMsg"></span>
+                </div>
+                <span id="buyCountMsg" class="center-span"></span>
         </div>
     </div>
 
