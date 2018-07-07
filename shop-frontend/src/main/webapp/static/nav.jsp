@@ -17,8 +17,9 @@
             <li><a href="userinfo.html"> <i class="fa fa-2x fa-user"></i>
                 <p>用户中心</p>
             </a>
+            
             <a href="${ctx }/user/logout">注销</a>
-            </li>
+            </li>        
         </c:if>
         <c:if test="${empty sessionScope.username }">
             <li><a id="loginButton" href="javascript:(0)"> <i class="fa fa-2x fa-user"></i>

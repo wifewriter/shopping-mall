@@ -97,7 +97,7 @@ public class SysUserController {
 		 */
 		@RequestMapping("toRegister")
 		 public String  toRegister() {
-			return "register";
+			return "user/register";
 			
 		}
 		 
@@ -130,7 +130,7 @@ public class SysUserController {
 			 sysUser.setId(id);
 			 sysUser.setStatus(1);
 			 userService.addSysUser(sysUser);
-			return "login";
+			return "index";
 			
 		}
 		

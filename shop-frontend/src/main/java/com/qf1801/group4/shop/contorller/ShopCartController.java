@@ -39,7 +39,7 @@ public class ShopCartController {
 		}
 		model.addAttribute("totalPrices", totalPrices);
 		model.addAttribute("shopProductList", shopProductList);
-		return "shopcar";
+		return "car/shopcar";
 		//}
 		
 		
@@ -88,5 +88,14 @@ public class ShopCartController {
 		}
 		return "fail";
 	}
+	
+	/**
+	 * 结算
+	 */
+	@RequestMapping("settle")
+	public String settle(){
+		return null;
+		}
+	
 
 }

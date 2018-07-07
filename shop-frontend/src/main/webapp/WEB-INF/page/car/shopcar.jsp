@@ -16,7 +16,7 @@
 <!-- 设置在苹果设备上状态的颜色，默认白色，要设置成什么颜色以Web颜色的风格而定 -->
 <meta name="apple-mobile-web-app-status-bar-style" content="white">
 <title>微信商城-购物车</title>
-<%@include file="../../static/import.jsp"%>
+<%@include file="../../../static/import.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="${ctx }/static/vendor/normalize.min.css" />
 <!-- 可选 -->
@@ -36,7 +36,7 @@
 	href="${ctx }/static/vendor/layer/mobile/need/layer.css" />
 </head>
 <body>
-	<%@include file="../../static/nav.jsp"%>
+	<%@include file="../../../static/nav.jsp"%>
 
 	<section style="width: 100%; height: .6rem;"></section>
 	<section id="shopCar" class="shopcar-container">
@@ -107,7 +107,7 @@
 			<span class="left-price" >总价：￥ <span id="totalPrices">${totalPrices }</span></span>
 		</div>
 		<div class="footer-right">
-			<a href="orderlist.html">结算</a>
+			<a href="${ctx }/shopcar/settle">结算</a>
 		</div>
 	</footer>
 
@@ -205,19 +205,10 @@
 				}, function() {
 					$.post("/shopcar/prugeShopCart",function(msg){
 						if(msg=="success"){
-							$("#shopCar").html('<div class="container-inner" style="display: block;">'+
-									'<div class="inner-car">'+
-									'<img src="${ctx }/static/img/cart_pic.png" />'+
-								'</div>'+
-								'<p>您还没有宝贝，赶快去逛逛吧!</p>'+
-								'<div class="inner-now">'+
-									'<a href="">马上去逛逛</a>'+
-								'</div>'+
-							'</div>');
-							$('#totalPrices').html('￥ 0');
+						location="${ctx }/shopcar/toShopCar";
 						}
 					})
-				});
+				})
 			});
 
 		});
