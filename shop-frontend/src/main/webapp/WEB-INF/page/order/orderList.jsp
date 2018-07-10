@@ -155,7 +155,7 @@
 <script>
     $('#submitOrder').click(function () {
         var data = $('#orderForm').serialize();
-        console.info(data);
+        console.info(data);0
         $.post('/order/addOrder', data, function (result) {
             if (result == "success") {
                 layer.msg("下单成功请在15分钟内付款");
