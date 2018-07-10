@@ -15,7 +15,7 @@
 		sys_user_id=#{id};
 	</select>
 
-    <select id="updateShopCart" parameterType="ShopCart" resultType="Integer">
+    <select id="updateShopCart" parameterType="ShopCart" resultType="java.lang.Integer">
 		update shop_cart set count = #{count} where id=#{id}
 	</select>
 
