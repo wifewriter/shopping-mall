@@ -15,7 +15,8 @@ public class ShopOrderProduct {
     @Column(name = "shop_product_id")
     private String shopProductId;
 
-    private String name;
+    @Column(name = "shop_order_id")
+    private String shopOrderId;
 
     private Integer count;
 
@@ -50,17 +51,17 @@ public class ShopOrderProduct {
     }
 
     /**
-     * @return name
+     * @return shopOrderId
      */
-    public String getName() {
-        return name;
+    public String getShopOrderId() {
+        return shopOrderId;
     }
 
     /**
-     * @param name
+     * @param shopOrderId
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setShopOrderId(String shopOrderId) {
+        this.shopOrderId = shopOrderId;
     }
 
     /**

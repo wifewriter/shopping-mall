@@ -65,7 +65,7 @@ DROP TABLE IF EXISTS `shop_order_product`;
 CREATE TABLE `shop_order_product` (
   `id` varchar(50) NOT NULL,
   `shop_product_id` varchar(50) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `shop_order_id` varchar(20) NOT NULL,
   `count` int(11) NOT NULL,
   `subtotal` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id`)

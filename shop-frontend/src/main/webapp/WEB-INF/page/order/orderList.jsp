@@ -25,91 +25,87 @@
 <body>
 <%@include file="../../../static/nav.jsp" %>
 <div style="height: 80px;"></div>
-<section class="orderlist-main">
-    <div class="main-goods">
-        <h3>收货人地址</h3>
-        <div class="goods-form">
-            <form id="shopReceiveAddressesFrom" action="javascript:void(0)">
-                <div class="form-solid"></div>
-                <input type="radio" value="address3" name="address" id="new-address"
-                       style="cursor: pointer;"/>&nbsp;<label for="new-address" class="form-label">使用新的收货地址</label>
-                <div class="form-new-address">
-                    <div class="address-inner">
-                        <span>收货人姓名:</span><br/>
-                        <input type="text" class="input"/>
-                        <span>所在地区：</span><br/>
-                        <select name="privence" style="width: 1.3rem;height: .4rem;">
-                            <option value="">--请选择所在省市--</option>
-                            <option value="">北京市</option>
-                            <option value="">上海市</option>
-                            <option value="">重庆市</option>
-                        </select>&nbsp;&nbsp;
-                        <select name="city" style="width: 1.3rem;height: .4rem;">
-                            <option value="privence">--请选择所在城市--</option>
-                            <option value="">长沙</option>
-                            <option value="">武汉</option>
-                            <option value="">昆明</option>
-                        </select>&nbsp;&nbsp;
-                        <select name="area" style="width: 1.3rem;height: .4rem;">
-                            <option value="privence">--请选择所在地区--</option>
-                            <option value="">沙坪坝区</option>
-                            <option value="">呈贡区</option>
-                            <option value="">五华区</option>
-                        </select><br/>
-                        <span>详细地址:</span><br/>
-                        <input type="text" class="input"/><br/>
-                        <span>手机号码:</span><br/>
-                        <input type="text" class="input"/><br/>
-                        <input type="checkbox" id="address" checked="checked"/>&nbsp;<label for="address" class="text">自动保存收货地址（选择后该地址将会保存到你的收货地址列表）</label>
+<form id="orderForm" action="javascript:void(0)">
+    <section class="orderlist-main">
+        <div class="main-goods">
+            <h3>收货人地址</h3>
+            <div class="goods-form">
+                <div id="shopReceiveAddressesFrom">
+                    <input type="hidden" id="state" name="state" value="1">
+                    <div class="form-solid"></div>
+                    <input type="radio" value="address3" name="addressId" id="newAddress" var="newAddress"
+                           style="cursor: pointer;"/>&nbsp;<label for="newAddress" class="form-label">使用新的收货地址</label>
+                    <div class="form-new-address">
+                        <div class="address-inner">
+                            <span>收货人姓名:</span><br/>
+                            <input name="receiver" type="text" class="input"/>
+                            <span>所在地区：</span><br/>
+                            <select id="provence" name="provence" style="width: 1.3rem;height: .4rem;">
+                                <option value="">--请选择所在省市--</option>
+                            </select>&nbsp;&nbsp;
+                            <select id="city" name="city" class="hidden" style="width: 1.3rem;height: .4rem;">
+                                <option value="">--请选择所在城市--</option>
+                            </select>&nbsp;&nbsp;
+                            <select id="area" name="area" class="hidden" style="width: 1.3rem;height: .4rem;">
+                                <option value="">--请选择所在地区--</option>
+                            </select><br/>
+                            <span>详细地址:</span><br/>
+                            <input type="text" class="input"/><br/>
+                            <span>手机号码:</span><br/>
+                            <input type="text" class="input"/><br/>
+                            <input type="checkbox" id="address" checked="checked"/>&nbsp;<label for="address"
+                                                                                                class="text">自动保存收货地址（选择后该地址将会保存到你的收货地址列表）</label>
+                        </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
 
-    <div class="main-goods">
-        <h3>发票信息</h3>
-        <div class="goods-form">
-            <form action="">
-                <input type="checkbox" id="invoice"/>&nbsp;<label for="invoice" class="text1">是否开发票</label>
-                <div class="form-invoice">
-                    <div class="invoice-inner">
-                        <span>发票抬头：</span><br/>
-                        <select name="" class="inner-title">
-                            <option value="">个人</option>
-                            <option value="">单位</option>
-                        </select>
-                        <input type="text"/>
+        <div class="main-goods">
+            <h3>发票信息</h3>
+            <div class="goods-form">
+                <form action="">
+                    <input type="checkbox" id="invoice"/>&nbsp;<label for="invoice" class="text1">是否开发票</label>
+                    <div class="form-invoice">
+                        <div class="invoice-inner">
+                            <span>发票抬头：</span><br/>
+                            <select name="" class="inner-title">
+                                <option value="">个人</option>
+                                <option value="">单位</option>
+                            </select>
+                            <input type="text"/>
+                        </div>
                     </div>
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
-    <div class="main-goods-list">
-        <h3>商品清单</h3>
-        <div id="goodListTable"></div>
-    </div>
+        <div class="main-goods-list">
+            <h3>商品清单</h3>
+            <div id="goodListTable"></div>
+        </div>
 
-    <div class="main-message">
-        <h3>给卖家留言</h3>
-        <input type="text" id="messageInput"/>
-    </div>
-</section>
+        <div class="main-message">
+            <h3>给卖家留言</h3>
+            <input type="text" id="messageInput"/>
+        </div>
+    </section>
 
-<section style="width: 100%;height: .5rem;"></section>
-<footer class="orderlist-footer">
-    <div class="footer-left">
-        <span class="left-price">总价： <span>￥79743</span></span>
-    </div>
-    <div class="footer-right">
-        <a href="">提交订单</a>
-    </div>
+    <section style="width: 100%;height: .5rem;"></section>
+    <footer class="orderlist-footer">
+        <div class="footer-left">
+            <span class="left-price">总价：<span><input type="hidden" id="total" name="total" value=""></span></span>
+        </div>
+</form>
+<div id="submitOrder" class="footer-right">
+    <a href="javascript:void(0)">提交订单</a>
+</div>
 </footer>
-
+</form>
 <script src="${ctx}/static/js/resize.js"></script>
 <script src="${ctx}/static/vendor/jquery.min.js"></script>
 <script src="/static/vendor/template.js"></script>
+<script src="/static/vendor/layer/layer.js"></script>
 
+<%--商品列表模板--%>
 <script id="goodList" type="text/html">
     <table class="table table-bordered">
         <tr>
@@ -127,19 +123,49 @@
     </table>
 </script>
 
+<%--购物车地址模板--%>
 <script id="shopReceiveAddresses" type="text/html">
     {{each shopReceiveAddresses as v i}}
-    <input type="radio" value="address{{i}}" name="address" id="address{{i}}" class="address"
+    <input type="radio" value="{{v.id}}" name="addressId" id="address{{i}}" class="address"
            style="cursor: pointer;" {{if v.isDefault== 1}}checked{{/if}}/>&nbsp;
     <label for="address{{i}}" class="form-label">{{v.province}} {{v.city}} {{v.area}} {{ v.address}}</label>
     <p><span>姓名：</span>{{v.receiver}} &nbsp;&nbsp;<span>手机号码:</span>{{v.phone}}</p>
     {{/each}}
 </script>
 
+<%--省份模板--%>
+<script id="provenceTemplate" type="text/html">
+    {{each data as v i}}
+    <option value="{{v.provenceId}}">{{v.province}}</option>
+    {{/each}}
+</script>
+<%--城市模板--%>
+<script id="cityTemplate" type="text/html">
+    {{each data as v i}}
+    <option value="{{v.provenceId}}">{{v.province}}</option>
+    {{/each}}
+</script>
+
+<script id="areaTemplate" type="text/html">
+    {{each data as v i}}
+    <option value="{{v.provenceId}}">{{v.province}}</option>
+    {{/each}}
+</script>
+
 <script>
-
-    function
-
+    $('#submitOrder').click(function () {
+        var data = $('#orderForm').serialize();
+        console.info(data);
+        $.post('/order/addOrder', data, function (result) {
+            if (result == "success") {
+                layer.msg("下单成功请在15分钟内付款");
+            } else if (result == "库存不足") {
+                layer.msg("库存不足！");
+            } else {
+                layer.msg("下单失败，请重试！");
+            }
+        });
+    });
 
     // 添加地址列表
     function createAddressList() {
@@ -148,7 +174,6 @@
                 "shopReceiveAddresses": shopReceiveAddresses
             };
             var html = template("shopReceiveAddresses", data);
-            console.info(html);
             $('#shopReceiveAddressesFrom').prepend(html);
         });
     }
@@ -163,17 +188,48 @@
             };
             var html = template("goodList", data);
             $('#goodListTable').append(html);
+            // 修改总金额
+            var total = 0;
+            $.each(ShopProducts, function (n, v) {
+                total += v.cartCount * v.price;
+            });
+            $('#total').val(total);
+            $('#total').after('￥' + total);
         });
     }
 
 
     $(function () {
-        $('#new-address').click(function () {
+        /**
+         * 创建地址选项框及类容
+         *
+         * @param url
+         * @param name
+         * @param templateName
+         */
+        function createAddress(url, templateName) {
+            $.post(url, function (result) {
+                var data = {
+                    "data": result
+                };
+                var html = template(templateName + 'Template', data);
+                $('#' + templateName).append(html);
+            })
+        }
+
+        $('#newAddress').click(function () {
             if (this.checked) {
                 $('.form-new-address').show();
             } else {
                 $('.form-new-address').hidden();
             }
+            createAddress('/order/getProvences', "provence");
+        });
+
+
+        $('#provence').change(function () {
+            $(this).attr();
+            createAddress('/order/getCities/{}', "city");
         });
 
         $('#invoice').click(function () {

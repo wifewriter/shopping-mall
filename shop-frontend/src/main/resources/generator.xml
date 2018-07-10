@@ -19,16 +19,19 @@
 			connectionURL="${db.url}" userId="${db.username}" password="${db.password}">
 		</jdbcConnection>
 
-		<javaModelGenerator targetPackage="entity"
+		<javaModelGenerator targetPackage="com.qf1801.group4.shop.entity"
 			targetProject="src/main/java/" />
 
 		<sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources" />
 
-		<javaClientGenerator targetPackage="com.qf1801.group4.shop."
+		<javaClientGenerator targetPackage="com.qf1801.group4.shop.dao"
 			targetProject="src/main/java" type="XMLMAPPER" />
 
-		<table tableName="%">
-		<!--<table tableName="">-->
+		<!--<table tableName="%">-->
+		<table tableName="city">
+			<generatedKey column="id" sqlStatement="JDBC" />
+		</table>
+		<table tableName="province">
 			<generatedKey column="id" sqlStatement="JDBC" />
 		</table>
 	</context>

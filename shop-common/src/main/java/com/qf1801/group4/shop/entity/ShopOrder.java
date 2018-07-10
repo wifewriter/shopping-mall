@@ -1,11 +1,9 @@
 package com.qf1801.group4.shop.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "shop_order")
 public class ShopOrder {
@@ -53,6 +51,16 @@ public class ShopOrder {
 
     @Column(name = "create_time")
     private Date createTime;
+
+    @Transient
+    private List<ShopOrderProduct> shopOrderProducts;
+
+    /**
+     * 一个订单有多个商品
+     */
+    @Transient
+    private List<ShopProduct> shopProducts;
+
 
     /**
      * @return id
@@ -274,5 +282,23 @@ public class ShopOrder {
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public List<ShopOrderProduct> getShopOrderProducts() {
+        return shopOrderProducts;
+    }
+
+    public ShopOrder setShopOrderProducts(List<ShopOrderProduct> shopOrderProducts) {
+        this.shopOrderProducts = shopOrderProducts;
+        return this;
+    }
+
+    public List<ShopProduct> getShopProducts() {
+        return shopProducts;
+    }
+
+    public ShopOrder setShopProducts(List<ShopProduct> shopProducts) {
+        this.shopProducts = shopProducts;
+        return this;
     }
 }

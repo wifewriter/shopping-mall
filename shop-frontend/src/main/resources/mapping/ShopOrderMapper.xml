@@ -21,4 +21,27 @@
     <result column="state_operate_time" jdbcType="TIMESTAMP" property="stateOperateTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
+
+  <!--关联订单和产品表以及产品关联表-->
+  <!--<resultMap id="OrdersAndProductResult" type="com.qf1801.group4.shop.entity.ShopOrder">-->
+    <!--<id column="id" jdbcType="VARCHAR" property="id" />-->
+    <!--<result column="sys_user_id" jdbcType="VARCHAR" property="sysUserId" />-->
+    <!--<result column="receiver" jdbcType="VARCHAR" property="receiver" />-->
+    <!--<result column="province" jdbcType="VARCHAR" property="province" />-->
+    <!--<result column="city" jdbcType="VARCHAR" property="city" />-->
+    <!--<result column="area" jdbcType="VARCHAR" property="area" />-->
+    <!--<result column="address" jdbcType="VARCHAR" property="address" />-->
+    <!--<result column="phone" jdbcType="VARCHAR" property="phone" />-->
+    <!--<result column="total" jdbcType="DECIMAL" property="total" />-->
+    <!--<result column="msg" jdbcType="VARCHAR" property="msg" />-->
+    <!--<result column="ticket" jdbcType="VARCHAR" property="ticket" />-->
+    <!--<result column="shop_order_product_id" jdbcType="VARCHAR" property="shopOrderProductId" />-->
+    <!--<result column="state" jdbcType="TINYINT" property="state" />-->
+    <!--<result column="state_operate_time" jdbcType="TIMESTAMP" property="stateOperateTime" />-->
+    <!--<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />-->
+    <!--<collection property="shopProducts" column=""-->
+  <!--</resultMap>-->
+
+
+
 </mapper>

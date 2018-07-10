@@ -42,7 +42,7 @@ public class ShopProduct {
 	private String description;
 
 	private ShopProductCategory shopProductCategory;
-	
+
 	@Transient
 	private Integer cartCount;
 	

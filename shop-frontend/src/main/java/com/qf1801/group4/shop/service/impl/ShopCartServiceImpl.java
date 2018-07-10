@@ -16,7 +16,7 @@ public class ShopCartServiceImpl implements ShopCartService {
 
 	@Override
 	public List<ShopProduct> getShopCartByUserId(String id) {
-		List<ShopProduct> list =shopCartMapper.getShopProductByUserId(id);
+		List<ShopProduct> list =shopCartMapper.getShopProductsByUserId(id);
 		return list;
 	}
 

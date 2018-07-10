@@ -7,7 +7,7 @@
     -->
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="shop_product_id" jdbcType="VARCHAR" property="shopProductId" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="shopOrderId" jdbcType="VARCHAR" property="shopOrderId" />
     <result column="count" jdbcType="INTEGER" property="count" />
     <result column="subtotal" jdbcType="DECIMAL" property="subtotal" />
   </resultMap>

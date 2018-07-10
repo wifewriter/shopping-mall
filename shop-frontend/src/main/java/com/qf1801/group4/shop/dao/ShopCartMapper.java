@@ -7,7 +7,7 @@ import tk.mybatis.mapper.common.Mapper;
 import java.util.List;
 
 public interface ShopCartMapper extends Mapper<ShopCart> {
-	   List<ShopProduct> getShopProductByUserId(String id);
+	   List<ShopProduct> getShopProductsByUserId(String id);
 	   
 	   Integer updateShopCart(ShopCart shopCart);
 }

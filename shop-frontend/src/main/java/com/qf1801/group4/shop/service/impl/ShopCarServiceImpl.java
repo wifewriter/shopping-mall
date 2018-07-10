@@ -24,7 +24,7 @@ public class ShopCarServiceImpl implements ShopCarService {
         criteria.andEqualTo("shopProductId", shopCart.getShopProductId());
         criteria.andEqualTo("sysUserId", shopCart.getSysUserId());
         List<ShopCart> shopCarts = shopCartMapper.selectByExample(example);
-        if (shopCarts.size() <= 0) {
+        if (shopCarts.size() <= 0) {// 没有就添加
             shopCart.setId(UUID.randomUUID().toString());
             row = shopCartMapper.insert(shopCart);
         } else {

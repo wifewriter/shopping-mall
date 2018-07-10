@@ -19,17 +19,6 @@
     </resultMap>
 
     <resultMap id="WitchShopProductCategory" type="com.qf1801.group4.shop.entity.ShopProduct">
-        <id column="id" jdbcType="VARCHAR" property="id"/>
-        <result column="pic_url" jdbcType="VARCHAR" property="picUrl"/>
-        <result column="flag" jdbcType="TINYINT" property="flag"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="introduction" jdbcType="VARCHAR" property="introduction"/>
-        <result column="price" jdbcType="DECIMAL" property="price"/>
-        <result column="recommend" jdbcType="TINYINT" property="recommend"/>
-        <result column="number" jdbcType="INTEGER" property="number"/>
-        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="shop_product_category_id" jdbcType="VARCHAR" property="shopProductCategoryId"/>
-        <result column="description" jdbcType="LONGVARCHAR" property="description"/>
         <association property="shopProductCategory" column="shop_product_category_id"
                      select="com.qf1801.group4.shop.dao.ShopProductCategoryMapper.getOne"
                      javaType="ShopProductCategory" />
@@ -38,6 +27,4 @@
     <select id="getProdWitchShopProductCategory" parameterType="String" resultMap="WitchShopProductCategory">
         select * from shop_product where id = #{id};
     </select>
-   
-    
 </mapper>
