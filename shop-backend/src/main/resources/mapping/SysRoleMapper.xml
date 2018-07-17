@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf1801.group4.shop.dao.SysRoleMapper">
+    <resultMap id="BaseResultMap" type="com.qf1801.group4.shop.entity.SysRole">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+    </resultMap>
+    <resultMap id="RoleUserResultMap" type="com.qf1801.group4.shop.entity.SysRole">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+        <collection property="sysUsers" column="id" javaType="java.util.ArrayList"
+                    ofType="com.qf1801.group4.shop.entity.SysUser"
+                    select="com.qf1801.group4.shop.dao.SysUserMapper.selectUsersByRoleId" fetchType="lazy">
+        </collection>
+    </resultMap>
+    <select id="selectRolesByUserId" resultMap="BaseResultMap">
+        select * from sys_role where id in (select sys_role_id from sys_user_role where sys_user_id = #{UserId});
+    </select>
+    <select id="selectRoleById" resultMap="RoleUserResultMap">
+        select * from sys_role where id = #{roleId};
+    </select>
+</mapper>

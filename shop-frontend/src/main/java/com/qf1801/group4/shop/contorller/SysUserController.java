@@ -1,19 +1,17 @@
 package com.qf1801.group4.shop.contorller;
 
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import com.google.code.kaptcha.Constants;
+import com.qf1801.group4.shop.common.Constant;
+import com.qf1801.group4.shop.entity.SysUser;
+import com.qf1801.group4.shop.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.code.kaptcha.Constants;
-import com.qf1801.group4.shop.common.Constant;
-import com.qf1801.group4.shop.entity.SysUser;
-import com.qf1801.group4.shop.service.SysUserService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("user")
@@ -97,7 +95,6 @@ public class SysUserController {
 		@RequestMapping("toRegister")
 		 public String  toRegister() {
 			return "user/register";
-			
 		}
 		 
 		 

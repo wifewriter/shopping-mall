@@ -122,7 +122,7 @@
 			<span class="left-price" >总价：￥ <span id="totalPrices">${totalPrices }</span></span>
 		</div>
 		<div class="footer-right">
-			<a href="${ctx }/shopcar/settle">结算</a>
+			<a href="/page/${sessionScope.sysUserId}/toOrderList">结算</a>
 		</div>
 	</footer>
 

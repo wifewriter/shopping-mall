@@ -3,6 +3,8 @@ package com.qf1801.group4.shop.entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "sys_menu")
 public class SysMenu {
@@ -15,9 +17,13 @@ public class SysMenu {
      */
     private String pid;
 
-    private String name;
+    private String text;
 
     private String url;
+
+    private String state;
+
+    private List<SysMenu> children = new ArrayList<>();
 
     /**
      * @return id
@@ -54,15 +60,15 @@ public class SysMenu {
     /**
      * @return name
      */
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
     /**
-     * @param name
+     * @param text
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**
@@ -77,5 +83,23 @@ public class SysMenu {
      */
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public SysMenu setState(String state) {
+        this.state = state;
+        return this;
+    }
+
+    public List<SysMenu> getChildren() {
+        return children;
+    }
+
+    public SysMenu setChildren(List<SysMenu> children) {
+        this.children = children;
+        return this;
     }
 }

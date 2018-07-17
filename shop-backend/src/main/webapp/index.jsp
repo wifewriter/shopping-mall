@@ -11,6 +11,8 @@
     <title>index</title>
 </head>
 <body>
-backend-index
+<script>
+    location.href = "/page/toLoginPage";
+</script>
 </body>
 </html>

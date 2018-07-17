@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf1801.group4.shop.dao.SysMenuMapper">
+    <resultMap id="BaseResultMap" type="com.qf1801.group4.shop.entity.SysMenu"></resultMap>
+    <select id="selectMenu" parameterType="String" resultType="com.qf1801.group4.shop.entity.SysMenu">
+        select * from sys_menu
+        <if test="_parameter != null and _parameter !=''">
+            where pid = #{pid}
+        </if>
+        <if test="_parameter == null">
+            where pid is null
+        </if>;
+    </select>
+
+    <select id="listUserMenu" resultType="SysMenu">
+	   	SELECT DISTINCT
+			sm.*
+		FROM
+			sys_user_role sur,
+			sys_role_menu srm,
+			sys_role sr,
+		  sys_menu sm
+		WHERE
+			sur.sys_role_id = sr.id
+		AND srm.sys_role_id = sr.id
+		AND srm.sys_menu_id = sm.id
+		AND sr.`status` = 1
+		AND sur.sys_user_id = #{userId}
+   </select>
+</mapper>

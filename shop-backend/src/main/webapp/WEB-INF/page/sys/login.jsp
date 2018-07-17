@@ -8,6 +8,7 @@
     <%@ include file="/WEB-INF/view/common/import.jsp" %>
     <link href="${ctx }/static/vendor/uimaker/pages/css/base.css" rel="stylesheet"/>
     <link href="${ctx }/static/vendor/uimaker/pages/css/login/login.css" rel="stylesheet"/>
+    <link href="${ctx }/static/vendor/nice-validator-1.1.4/dist/local/zh-CN.js" rel="stylesheet"/>
 </head>
 <body class="white">
 <div class="login-hd">
@@ -27,32 +28,34 @@
                     <div class="lg-label"><h4>用户登录</h4></div>
                     <div class="alert alert-error">
                         <i class="iconfont">&#xe62e;</i>
-                        <span>请输入用户名</span>
+                        <span id="loginMsg">请输入用户名</span>
                     </div>
-                    <form>
+                    <form id="loginForm">
                         <div class="lg-username input-item clearfix">
                             <i class="iconfont">&#xe60d;</i>
-                            <input type="text" placeholder="账号/邮箱" name="email" autocomplete="off">
+                            <input type="text" placeholder="账号/邮箱" name="email" autocomplete="off" data-rule="required"
+                                   value="张三">
                         </div>
                         <div class="lg-password input-item clearfix">
                             <i class="iconfont">&#xe634;</i>
-                            <input type="password" placeholder="请输入密码" name="password">
+                            <input type="password" placeholder="请输入密码" name="password" value="123456">
                         </div>
                         <div class="lg-check clearfix">
                             <div class="input-item">
                                 <i class="iconfont">&#xe633;</i>
-                                <input type="text" placeholder="验证码">
+                                <input type="text" id="validateCode" name="validateCode" placeholder="验证码">
                             </div>
-                            <span class="check-code"><img src="${ctx }/kaptcha.jpg"/></span>
+                            <span class="check-code"><img src="${ctx }/kaptcha.jpg"
+                                                          onclick="changeValidateCode(this)"/></span>
                         </div>
                         <div class="tips clearfix">
-                            <label><input type="checkbox" checked="checked">记住用户名</label>
+                            <label><input id="remember" name="remember" type="checkbox" checked="checked">记住用户名</label>
                             <a href="javascript:;" class="register">立即注册</a>
                             <a href="javascript:;" class="forget-pwd">忘记密码？</a>
                         </div>
                         <div class="enter">
-                            <a href="javascript" class="purchaser">商家登录</a>
-                            <a href="javascript:;" class="supplier" >管理员登录</a>
+                            <a href="javascript:void(0)" class="purchaser">商家登录</a>
+                            <a id="supplierLogin" href="javascript:void(0)" class="supplier">管理员登录</a>
                         </div>
                     </form>
                     <div class="line line-y"></div>
@@ -77,6 +80,34 @@
 </div>
 
 <script>
+
+    $('#supplierLogin').click(function () {
+        var $loginMsg = $('#loginMsg');
+        $.post("/user/login", $('#loginForm').serialize(), function (result) {
+            if (result == "main") {
+                location.href = "/page/main";
+            } else if (result == "forbidden") {
+                $loginMsg.html("账号被禁用，请联系管理员！");
+            } else if (result == "nullUser") {
+                $loginMsg.html("请输入账号密码！");
+            } else if (result == "nullPassword") {
+                $loginMsg.html("请输入密码！");
+            } else if (result == "nullEmail") {
+                $loginMsg.html("请填写账号/邮箱！");
+            } else if (result == "nullValidateCode") {
+                $loginMsg.html("请填写验证码！");
+            } else if (result == "errValidateCode") {
+                $loginMsg.html("验证码错误！");
+            } else {
+                $loginMsg.html("用户名或密码错误！");
+            }
+        });
+    });
+
+    function changeValidateCode(o) {
+        o.src = "/kaptcha.jpg?v=" + Math.random();
+    }
+
 
 </script>
 </body>

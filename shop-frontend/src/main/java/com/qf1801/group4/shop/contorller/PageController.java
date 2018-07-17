@@ -17,8 +17,6 @@ public class PageController {
      * logger
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(PageController.class);
-    public static final int FIST_PAGE_NO = 1;
-    public static final int DEFULT_PAGE_SIZE = 5;
 
     @Autowired
     private ProductService productService;

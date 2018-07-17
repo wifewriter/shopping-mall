@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf1801.group4.shop.dao.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.qf1801.group4.shop.entity.SysUser">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="password" jdbcType="CHAR" property="password"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+    </resultMap>
+    <resultMap id="UserRolesResultMap" type="com.qf1801.group4.shop.entity.SysUser">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="password" jdbcType="CHAR" property="password"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <collection property="sysRoles" column="id" fetchType="lazy" ofType="com.qf1801.group4.shop.entity.SysRole"
+                    javaType="java.util.ArrayList"
+                    select="com.qf1801.group4.shop.dao.SysRoleMapper.selectRolesByUserId">
+        </collection>
+    </resultMap>
+    <select id="selectUser" resultMap="UserRolesResultMap">
+        select * from sys_user where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="email != null">
+            and email = #{email}
+        </if>
+        <if test="password != null">
+            and password = #{password}
+        </if>
+        <if test="username != null">
+            and username = #{username}
+        </if>
+        <if test="status != null">
+            and status = #{status}
+        </if>
+    </select>
+    <select id="selectUsersByRoleId" resultMap="UserRolesResultMap">
+        select * from sys_user
+         where id in (select sys_user_id from sys_user_role where sys_role_id =#{roleId});
+    </select>
+    <select id="selectUsers" resultMap="UserRolesResultMap">
+        select * from sys_user
+        <where>
+            <if test="id!=null and id!=''">
+                id = #{id}
+            </if>
+            <if test="email!=null and email!=''">
+                and email like concat('%',#{email},'%')
+            </if>
+            <if test="password!=null and password!=''">
+                and password = #{password}
+            </if>
+            <if test="username!= null and username!= ''">
+                and username like concat('%',#{username},'%')
+            </if>
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                and create_time <![CDATA[ <= ]]> #{createTime}
+            </if>
+        </where>
+    </select>
+    <select id="listUserMenu" resultType="com.qf1801.group4.shop.entity.SysMenu">
+        SELECT DISTINCT
+        sm.*
+        FROM
+        sys_user_role sur,
+        sys_role_menu srm,
+        sys_role sr,
+        sys_menu sm
+        WHERE
+        sur.sys_role_id = sr.id
+        AND srm.sys_role_id = sr.id
+        AND srm.sys_menu_id = sm.id
+        AND sr.`status` = 1
+        AND sur.sys_user_id = #{userId}
+    </select>
+
+</mapper>

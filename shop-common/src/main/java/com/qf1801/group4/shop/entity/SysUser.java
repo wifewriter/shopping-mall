@@ -1,19 +1,21 @@
 package com.qf1801.group4.shop.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
+@JsonIgnoreProperties(value = {"handler"})
 @Table(name = "sys_user")
-public class SysUser {
+public class SysUser implements Serializable {
+    private static final long serialVersionUID = 2585629042935386492L;
     @Id
     @GeneratedValue(generator = "JDBC")
     private String id;
-
     private String email;
-
     private String password;
-
     private String username;
 
     /**
@@ -21,18 +23,19 @@ public class SysUser {
      */
     private Integer status;
 
-    /**
-     * @return id
-     */
-    public String getId() {
-        return id;
+    @Transient
+    private List<SysRole> sysRoles;
+    @Column(name = "create_time")
+    private Date createTime;
+
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    /**
-     * @param id
-     */
-    public void setId(String id) {
-        this.id = id;
+    public SysUser setCreateTime(Date createTime) {
+        this.createTime = createTime;
+
+        return this;
     }
 
     /**
@@ -50,6 +53,20 @@ public class SysUser {
     }
 
     /**
+     * @return id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
      * @return password
      */
     public String getPassword() {
@@ -61,20 +78,6 @@ public class SysUser {
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * @return username
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * @param username
-     */
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     /**
@@ -94,4 +97,31 @@ public class SysUser {
     public void setStatus(Integer status) {
         this.status = status;
     }
+
+    public List<SysRole> getSysRoles() {
+        return sysRoles;
+    }
+
+    public SysUser setSysRoles(List<SysRole> sysRoles) {
+        this.sysRoles = sysRoles;
+
+        return this;
+    }
+
+    /**
+     * @return username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

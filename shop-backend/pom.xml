@@ -107,7 +107,7 @@
             <groupId>com.google.code.kaptcha</groupId>
             <artifactId>kaptcha</artifactId>
         </dependency>
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
