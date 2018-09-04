@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface ShopCartMapper extends Mapper<ShopCart> {
 	   List<ShopProduct> getShopProductsByUserId(String id);
-	   
+	   //你好你好
 	   Integer updateShopCart(ShopCart shopCart);
 }
